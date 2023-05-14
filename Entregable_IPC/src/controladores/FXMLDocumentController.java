@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
  *
  * @author jsoler
  */
+//Hola julio
 public class FXMLDocumentController implements Initializable {
     //========================================================
     // objects defined into FXML file with fx:id 
