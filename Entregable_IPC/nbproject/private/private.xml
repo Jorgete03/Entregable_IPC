@@ -4,9 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Z:/2º/IPC/PRACTS/Entregable_IPC/src/javafxmlapplication/JavaFXMLApplication.java</file>
+            <file>file:/Z:/2º/IPC/PRACTS/Entregable_IPC/src/CSS/Botones.css</file>
             <file>file:/Z:/2º/IPC/PRACTS/Entregable_IPC/src/controladores/FXMLDocumentController.java</file>
+            <file>file:/Z:/2º/IPC/PRACTS/Entregable_IPC/src/CSS/Fondo.css</file>
             <file>file:/Z:/2º/IPC/PRACTS/Entregable_IPC/src/controladores/FXMLSignUpController.java</file>
-            <file>file:/Z:/2º/IPC/PRACTS/Entregable_IPC/src/controladores/Utils.java</file>
+            <file>file:/Z:/2º/IPC/PRACTS/Entregable_IPC/src/controladores/FXMLInicioController.java</file>
         </group>
     </open-files>
 </project-private>
