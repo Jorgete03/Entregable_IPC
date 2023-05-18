@@ -1,19 +1,4 @@
-.root{
-    -fx-background-image: url("imagenes/Fondo.jpg");
+.background{
+    -fx-background-image: url("/imagenes/Fondo.jpg");
     -fx-background-size:cover;
-}
-.boton{
-    display: inline-block;
-  padding: 12px 20px;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  text-transform: uppercase;
-  color: #fff;
-  background-color: orange;
-  border: none;
-  border-radius: 30px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
