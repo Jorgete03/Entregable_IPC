@@ -39,30 +39,38 @@ public class FXMLPaginaInicialController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void clickSignUp(ActionEvent event) throws IOException {
-        FXMLLoader loader= new  FXMLLoader(getClass().getResource("/vista/FXMLPaginaInicial.fxml"));
-        Parent root = loader.load();
-        //======================================================================
-        // 2- creación de la escena con el nodo raiz del grafo de escena
-        Scene scene = new Scene(root);
-        //======================================================================
-        // 3- asiganación de la escena al Stage que recibe el metodo 
-        //     - configuracion del stage
-        //     - se muestra el stage de manera no modal mediante el metodo show()
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setTitle("Añadir persona");
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.showAndWait();
-    }
-
-    @FXML
-    private void clickLogIn(ActionEvent event) {
-    }
 
     @FXML
     private void clickPistas(ActionEvent event) {
+    }
+
+    @FXML
+    private void clickRegistrarse(ActionEvent event) throws IOException {
+         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLRegistro.fxml"));
+                Parent root = loader.load();
+                
+                
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("Registro");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+                botonRegistro.getScene().getWindow().hide();
+    }
+
+    @FXML
+    private void clickInicioSesion(ActionEvent event) throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLInicioDeSesión.fxml"));
+                Parent root = loader.load();
+                
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("Inicio");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+                botonInicio.getScene().getWindow().hide();
     }
     
 }
