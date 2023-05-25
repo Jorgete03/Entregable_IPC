@@ -41,12 +41,23 @@ public class FXMLPaginaInicialController implements Initializable {
 
 
     @FXML
-    private void clickPistas(ActionEvent event) {
+    private void clickPistas(ActionEvent event) throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/Reservas.fxml"));
+                Parent root = loader.load();
+                
+                
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("Registro");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+                botonRegistro.getScene().getWindow().hide();
     }
 
     @FXML
     private void clickRegistrarse(ActionEvent event) throws IOException {
-         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLRegistro.fxml"));
+         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLResgitro.fxml"));
                 Parent root = loader.load();
                 
                 

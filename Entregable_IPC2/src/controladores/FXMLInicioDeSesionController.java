@@ -40,14 +40,14 @@ public class FXMLInicioDeSesionController implements Initializable {
     private Button acceptButton;
     @FXML
     private Button cancelButton;
-    @FXML
     private TextField emailField;
-    @FXML
     private Label emailAlert;
     @FXML
     private PasswordField passwordField;
     @FXML
     private Label passwordAlert;
+    @FXML
+    private TextField nameField;
     
     
    
@@ -177,12 +177,19 @@ public class FXMLInicioDeSesionController implements Initializable {
     private void clickCancel(MouseEvent event) {
     }
    
-    @FXML
     private void handleBAcceptOnAction(ActionEvent event){
         emailField.textProperty().setValue("");
         passwordField.textProperty().setValue("");
         
         validEmail.setValue(Boolean.FALSE);
         validPassword.setValue(Boolean.FALSE);
+    }
+
+    @FXML
+    private void clickVolver(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleBAcceptOnAction1(ActionEvent event) {
     }
 }

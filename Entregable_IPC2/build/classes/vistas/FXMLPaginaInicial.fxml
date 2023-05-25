@@ -17,7 +17,7 @@
                   <Separator prefHeight="110.0" prefWidth="29.0" visible="false" />
                   <Button fx:id="botonInicio" mnemonicParsing="false" onAction="#clickInicioSesion" prefHeight="30.0" prefWidth="100.0" text="Iniciar Sesión" />
                   <Separator prefHeight="110.0" prefWidth="555.0" visible="false" />
-                  <Button fx:id="botonPistas" alignment="CENTER" mnemonicParsing="false" onAction="#clickPistas" prefHeight="30.0" prefWidth="121.0" text="Pistas Disponibles" />
+                  <Button fx:id="botonPistas" alignment="CENTER" mnemonicParsing="false" onAction="#clickPistas" prefHeight="30.0" prefWidth="121.0" text="Pistas Reservadas" />
               </items>
                <BorderPane.margin>
                   <Insets />

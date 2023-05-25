@@ -4,20 +4,30 @@
  */
 package controladores;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import model.Club;
+import model.ClubDAOException;
 
 /**
  * FXML Controller class
@@ -36,6 +46,7 @@ public class FXMLRegistro implements Initializable {
     private BooleanProperty validCVV;
     private BooleanProperty validDNI;
     private BooleanProperty validTarjeta;
+    Club club;
     
     private final int EQUALS = 0;
     @FXML
@@ -54,22 +65,14 @@ public class FXMLRegistro implements Initializable {
     private PasswordField repeatField;
     @FXML
     private Label repeatAlert;
-    @FXML
     private TextField dniField;
-    @FXML
-    private TextField nombreField;
-    @FXML
-    private TextField usuarioField;
-    @FXML
-    private PasswordField cvvField;
-    @FXML
-    private TextField tarjetaDeCreditoField;
     @FXML
     private Label dniAlert;
     @FXML
     private Label cvvAlert;
     @FXML
     private Label tarjetaAlert;
+
 
     private void manageError(Label errorLabel,TextField textField, BooleanProperty boolProp ){
         boolProp.setValue(Boolean.FALSE);
@@ -137,6 +140,14 @@ public class FXMLRegistro implements Initializable {
      
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        try {
+            club= Club.getInstance();
+        } catch (ClubDAOException ex) {
+            Logger.getLogger(FXMLRegistro.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLRegistro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         // TODO
         validEmail = new SimpleBooleanProperty();
         validEmail.setValue(Boolean.FALSE);
@@ -188,6 +199,7 @@ public class FXMLRegistro implements Initializable {
 
     @FXML
     private void clickAccept(MouseEvent event) {
+        
     }
 
     @FXML
@@ -203,6 +215,21 @@ public class FXMLRegistro implements Initializable {
 
     @FXML
     private void clickCancel(MouseEvent event) {
+    }
+
+    @FXML
+    private void clickVolver(ActionEvent event) throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaInicial.fxml"));
+                Parent root = loader.load();
+                
+                
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("Registro");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+                acceptButton.getScene().getWindow().hide();
     }
     
 }
