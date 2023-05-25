@@ -1,2 +1,0 @@
-controladores.Reservas
-controladores.BookingCell
