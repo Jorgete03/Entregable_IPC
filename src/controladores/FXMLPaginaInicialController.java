@@ -57,7 +57,7 @@ public class FXMLPaginaInicialController implements Initializable {
 
     @FXML
     private void clickRegistrarse(ActionEvent event) throws IOException {
-         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLResgitro.fxml"));
+         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLRegistro.fxml"));
                 Parent root = loader.load();
                 
                 

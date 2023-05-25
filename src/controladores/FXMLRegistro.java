@@ -23,9 +23,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 import model.Club;
 import model.ClubDAOException;
 
@@ -46,6 +48,10 @@ public class FXMLRegistro implements Initializable {
     private BooleanProperty validCVV;
     private BooleanProperty validDNI;
     private BooleanProperty validTarjeta;
+    private BooleanProperty validName;
+    private BooleanProperty validUser;
+    private BooleanProperty validApellidos;
+    
     Club club;
     
     private final int EQUALS = 0;
@@ -65,6 +71,7 @@ public class FXMLRegistro implements Initializable {
     private PasswordField repeatField;
     @FXML
     private Label repeatAlert;
+    @FXML
     private TextField dniField;
     @FXML
     private Label dniAlert;
@@ -72,7 +79,25 @@ public class FXMLRegistro implements Initializable {
     private Label cvvAlert;
     @FXML
     private Label tarjetaAlert;
-
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TextField userField;
+    @FXML
+    private PasswordField cvvField;
+    @FXML
+    private TextField tarjetaField;
+    @FXML
+    private Label nameAlert;
+    @FXML
+    private TextField apellidosField;
+    @FXML
+    private Label apellidosAlert;
+    @FXML
+    private Label userAlert;
+    
+   
+       
 
     private void manageError(Label errorLabel,TextField textField, BooleanProperty boolProp ){
         boolProp.setValue(Boolean.FALSE);
@@ -117,11 +142,54 @@ public class FXMLRegistro implements Initializable {
     }
       
       private void checkDNI(){
-          if(dniField.textProperty().getValueSafe().length() < 8){
-              
+          if(dniField.textProperty().getValueSafe().length() != 8){
+              manageError(dniAlert, dniField, validDNI);
+          } else {
+              manageCorrect(dniAlert, dniField, validDNI);
           }
       }
-    
+
+
+      private void checkCVV(){
+          if(cvvField.textProperty().getValueSafe().length() != 3){
+              manageError(cvvAlert, cvvField, validCVV);
+          } else {
+              manageCorrect(cvvAlert, cvvField, validCVV);
+          }
+      }
+      
+      private void checkName(){
+          if(nameField.textProperty().getValueSafe().length() < 1 && nameField.textProperty().getValueSafe().contains(" ")){
+              manageError(nameAlert, nameField, validName);
+          } else {
+              manageCorrect(nameAlert, nameField, validName);
+          }
+      }
+      
+      private void checkApellidos(){
+          if(apellidosField.textProperty().getValueSafe().length() < 1  && !nameField.textProperty().getValueSafe().contains(" ")){
+              manageError(apellidosAlert, apellidosField, validApellidos);
+          } else {
+              manageCorrect(apellidosAlert, apellidosField, validApellidos);
+          }
+      }
+      
+      private void checkUser(){
+          if(userField.textProperty().getValueSafe().length() < 1 && userField.textProperty().getValueSafe().contains(" ")){
+              manageError(userAlert, userField, validUser);
+          } else {
+              manageCorrect(userAlert, userField, validUser);
+          }
+      }
+      
+      private void checkTarjeta(){
+          if(tarjetaField.textProperty().getValueSafe().length() != 16){
+              manageError(tarjetaAlert, tarjetaField, validTarjeta);
+          } else {
+              manageCorrect(tarjetaAlert, tarjetaField, validTarjeta);
+          }
+      }
+      
     
     
     private void checkEquals(){
@@ -140,6 +208,10 @@ public class FXMLRegistro implements Initializable {
      
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
+       
+        
         try {
             club= Club.getInstance();
         } catch (ClubDAOException ex) {
@@ -170,7 +242,59 @@ public class FXMLRegistro implements Initializable {
             }
         }); 
         
+        validDNI = new SimpleBooleanProperty();
+        validDNI.setValue(Boolean.FALSE);
         
+        dniField.focusedProperty().addListener((observable, oldValue, newValue)-> {
+            if(!newValue){
+                checkDNI();
+            }
+        }); 
+        
+        validName = new SimpleBooleanProperty();
+        validName.setValue(Boolean.FALSE);
+        
+        nameField.focusedProperty().addListener((observable, oldValue, newValue)-> {
+            if(!newValue){
+                checkName();
+            }
+        }); 
+        
+        validApellidos = new SimpleBooleanProperty();
+        validApellidos.setValue(Boolean.FALSE);
+        
+        apellidosField.focusedProperty().addListener((observable, oldValue, newValue)-> {
+            if(!newValue){
+                checkApellidos();
+            }
+        }); 
+        
+        validUser = new SimpleBooleanProperty();
+        validUser.setValue(Boolean.FALSE);
+        
+        userField.focusedProperty().addListener((observable, oldValue, newValue)-> {
+            if(!newValue){
+                checkUser();
+            }
+        }); 
+        
+        validTarjeta = new SimpleBooleanProperty();
+        validTarjeta.setValue(Boolean.FALSE);
+        
+        tarjetaField.focusedProperty().addListener((observable, oldValue, newValue)-> {
+            if(!newValue){
+                checkTarjeta();
+            }
+        }); 
+        
+        validCVV = new SimpleBooleanProperty();
+        validCVV.setValue(Boolean.FALSE);
+        
+        cvvField.focusedProperty().addListener((observable, oldValue, newValue)-> {
+            if(!newValue){
+                checkCVV();
+            }
+        }); 
         
         equalPasswords = new SimpleBooleanProperty();
         equalPasswords.setValue(Boolean.FALSE);
@@ -185,6 +309,8 @@ public class FXMLRegistro implements Initializable {
         
         
         BooleanBinding validFields = Bindings.and(validEmail, validPassword)
+                .and(validCVV).and(validApellidos).and(validName)
+                .and(validUser).and(validDNI).and(validTarjeta)
                  .and(equalPasswords);
          
 
@@ -192,9 +318,7 @@ public class FXMLRegistro implements Initializable {
                 Bindings.not(validFields)
         );
         
-        cancelButton.setOnAction((event)-> {
-            cancelButton.getScene().getWindow().hide();
-        });
+       
     }    
 
     @FXML
@@ -215,11 +339,7 @@ public class FXMLRegistro implements Initializable {
     }
 
     @FXML
-    private void clickCancel(MouseEvent event) {
-    }
-
-    @FXML
-    private void clickVolver(ActionEvent event) throws IOException {
+    private void clickCancel(MouseEvent event) throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaInicial.fxml"));
                 Parent root = loader.load();
                 
@@ -232,5 +352,7 @@ public class FXMLRegistro implements Initializable {
                 stage.show();
                 acceptButton.getScene().getWindow().hide();
     }
+    
+
     
 }
