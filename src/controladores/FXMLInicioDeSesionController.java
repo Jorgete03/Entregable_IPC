@@ -4,192 +4,127 @@
  */
 package controladores;
 
+import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.binding.Bindings;
-import javafx.beans.binding.BooleanBinding;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import model.Club;
+import model.ClubDAOException;
 
 /**
+ * FXML Controller class
  *
- * @author julio
+ * @author LENOVO
  */
 public class FXMLInicioDeSesionController implements Initializable {
 
-
- 
-    //properties to control valid fieds values. 
-    private BooleanProperty validPassword;
-    private BooleanProperty validEmail;
-    private BooleanProperty equalPasswords;  
+    Club club;
     
-    //private BooleanBinding validFields;
-    
-    //When to strings are equal, compareTo returns zero  
     @FXML
     private Button acceptButton;
     @FXML
     private Button cancelButton;
-    private TextField emailField;
-    private Label emailAlert;
+    
     @FXML
-    private PasswordField passwordField;
+    private MFXTextField passwordField;
     @FXML
-    private Label passwordAlert;
+    private Label mError;
     @FXML
-    private TextField nameField;
-    
-    
-   
-    
+    private MFXTextField nameField;
 
     /**
-     * Updates the boolProp to false.Changes to red the background of the edit. 
-     * Makes the error label visible and sends the focus to the edit. 
-     * @param errorLabel label added to alert the user
-     * @param textField edit text added to allow user to introduce the value
-     * @param boolProp property which stores if the value is correct or not
+     * Initializes the controller class.
      */
-    private void manageError(Label errorLabel,TextField textField, BooleanProperty boolProp ){
-        boolProp.setValue(Boolean.FALSE);
-        showErrorMessage(errorLabel,textField);
-        textField.requestFocus();
- 
-    }
-    /**
-     * Updates the boolProp to true. Changes the background 
-     * of the edit to the default value. Makes the error label invisible. 
-     * @param errorLabel label added to alert the user
-     * @param textField edit text added to allow user to introduce the value
-     * @param boolProp property which stores if the value is correct or not
-     */
-    private void manageCorrect(Label errorLabel,TextField textField, BooleanProperty boolProp ){
-        boolProp.setValue(Boolean.TRUE);
-        hideErrorMessage(errorLabel,textField);
-        
-    }
-    /**
-     * Changes to red the background of the edit and
-     * makes the error label visible
-     * @param errorLabel
-     * @param textField 
-     */
-    private void showErrorMessage(Label errorLabel,TextField textField)
-    {
-        errorLabel.visibleProperty().set(true);
-        textField.styleProperty().setValue("-fx-background-color: #FCE5E0");    
-    }
-    /**
-     * Changes the background of the edit to the default value
-     * and makes the error label invisible.
-     * @param errorLabel
-     * @param textField 
-     */
-    private void hideErrorMessage(Label errorLabel,TextField textField)
-    {
-        errorLabel.visibleProperty().set(false);
-        textField.styleProperty().setValue("");
-    }
-
-
-    private void checkEditEmail(){
-        if(!Utils.checkEmail(emailField.textProperty().getValueSafe())){
-            //Incorrect Email
-            manageError(emailAlert, emailField, validEmail);
-        }else {
-            manageCorrect(emailAlert, emailField, validEmail);
-        }
-    }
-
-    private void checkEditPassword(){
-        if(!Utils.checkPassword(passwordField.textProperty().getValueSafe())){
-            manageError(passwordAlert, passwordField, validPassword);
-        } else{
-            manageCorrect(passwordAlert, passwordField, validPassword);
-        }
-    }
-    
-    
-    //=========================================================
-    // you must initialize here all related with the object 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
-        validEmail = new SimpleBooleanProperty();
-        validEmail.setValue(Boolean.FALSE);
-        
-        emailField.focusedProperty().addListener((observable, oldValue, newValue)->{
-            if (!newValue){
-                checkEditEmail();
-            }
+        try {
+            // TODO
+            club.getInstance();
+        } catch (ClubDAOException ex) {
+            Logger.getLogger(FXMLInicioDeSesionController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLInicioDeSesionController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        );
         
-        
-        
-        validPassword = new SimpleBooleanProperty();   
-        validPassword.setValue(Boolean.FALSE);
-        
-        passwordField.focusedProperty().addListener((observable, oldValue, newValue)-> {
-            if(!newValue){
-                checkEditPassword();
-            }
-        }); 
-        
-        
-        
-        equalPasswords = new SimpleBooleanProperty();
-        equalPasswords.setValue(Boolean.FALSE);
-        
-       
-        
-        
-        
-        BooleanBinding validFields = Bindings.and(validEmail, validPassword)
-                 .and(equalPasswords);
-         
+    }    
 
-        acceptButton.disableProperty().bind(
-                Bindings.not(validFields)
-        );
-        
-        cancelButton.setOnAction((event)-> {
-            cancelButton.getScene().getWindow().hide();
-        });
-
-    } 
 
     @FXML
-    private void clickAccept(MouseEvent event) {
+    private void clickAccept(MouseEvent event) throws IOException, ClubDAOException {
+           if(club.getInstance().getMemberByCredentials(nameField.getText(), passwordField.getText())==null){
+               nameField.setText("");
+               passwordField.setText("");
+               mError.setVisible(true);
+               
+           }
+           else{
+               FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
+                Parent root = loader.load();
+                
+                
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                
+                stage.setScene(scene);
+                stage.setTitle("Inicio de Sesión");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+                acceptButton.getScene().getWindow().hide();
+           }
+           
+           
+           
+           
+    
+        
     }
-
-    @FXML
-    private void clickCancel(MouseEvent event) {
-    }
+        
    
-    private void handleBAcceptOnAction(ActionEvent event){
-        emailField.textProperty().setValue("");
-        passwordField.textProperty().setValue("");
-        
-        validEmail.setValue(Boolean.FALSE);
-        validPassword.setValue(Boolean.FALSE);
-    }
 
     @FXML
-    private void clickVolver(ActionEvent event) {
+    private void clickCancel(MouseEvent event) throws IOException {
+            
+            FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaInicial.fxml"));
+                Parent root = loader.load();
+                
+                
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                
+                stage.setScene(scene);
+                stage.setTitle("Inicio de Sesión");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+                acceptButton.getScene().getWindow().hide();
     }
 
-    @FXML
-    private void handleBAcceptOnAction1(ActionEvent event) {
-    }
 }
+ 
+        
+        
+        
+
+    
+
+
+  
+
+    
+
+    
