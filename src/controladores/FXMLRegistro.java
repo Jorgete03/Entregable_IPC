@@ -23,13 +23,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.converter.IntegerStringConverter;
+
 import model.Club;
 import model.ClubDAOException;
+import model.Member;
 
 /**
  * FXML Controller class
@@ -51,6 +51,15 @@ public class FXMLRegistro implements Initializable {
     private BooleanProperty validName;
     private BooleanProperty validUser;
     private BooleanProperty validApellidos;
+    private BooleanProperty validTel;
+    
+    String nickName;
+    String password;
+    String name;
+    String surname;
+    String creditC;
+    int ccv;
+    String tel;
     
     Club club;
     
@@ -95,6 +104,10 @@ public class FXMLRegistro implements Initializable {
     private Label apellidosAlert;
     @FXML
     private Label userAlert;
+    @FXML
+    private TextField telField;
+    @FXML
+    private Label telAlert;
     
    
        
@@ -159,7 +172,7 @@ public class FXMLRegistro implements Initializable {
       }
       
       private void checkName(){
-          if(nameField.textProperty().getValueSafe().length() < 1 && nameField.textProperty().getValueSafe().contains(" ")){
+          if(nameField.textProperty().getValueSafe().length() < 1 ){
               manageError(nameAlert, nameField, validName);
           } else {
               manageCorrect(nameAlert, nameField, validName);
@@ -167,7 +180,7 @@ public class FXMLRegistro implements Initializable {
       }
       
       private void checkApellidos(){
-          if(apellidosField.textProperty().getValueSafe().length() < 1  && !nameField.textProperty().getValueSafe().contains(" ")){
+          if(apellidosField.textProperty().getValueSafe().length() < 1){
               manageError(apellidosAlert, apellidosField, validApellidos);
           } else {
               manageCorrect(apellidosAlert, apellidosField, validApellidos);
@@ -187,6 +200,14 @@ public class FXMLRegistro implements Initializable {
               manageError(tarjetaAlert, tarjetaField, validTarjeta);
           } else {
               manageCorrect(tarjetaAlert, tarjetaField, validTarjeta);
+          }
+      }
+      
+      private void checkTel(){
+          if(telField.textProperty().getValueSafe().length() != 9){
+              manageError(telAlert, telField, validTel);
+          } else {
+              manageCorrect(telAlert, telField, validTel);
           }
       }
       
@@ -296,6 +317,15 @@ public class FXMLRegistro implements Initializable {
             }
         }); 
         
+        validTel = new SimpleBooleanProperty();
+        validTel.setValue(Boolean.FALSE);
+        
+        telField.focusedProperty().addListener(((observable, oldValue, newValue) -> {
+            if(!newValue){
+                checkTel();
+            }
+        }));
+        
         equalPasswords = new SimpleBooleanProperty();
         equalPasswords.setValue(Boolean.FALSE);
         
@@ -310,20 +340,51 @@ public class FXMLRegistro implements Initializable {
         
         BooleanBinding validFields = Bindings.and(validEmail, validPassword)
                 .and(validCVV).and(validApellidos).and(validName)
-                .and(validUser).and(validDNI).and(validTarjeta)
+                .and(validUser).and(validDNI).and(validTarjeta).and(validTel)
                  .and(equalPasswords);
          
 
-        acceptButton.disableProperty().bind(
-                Bindings.not(validFields)
-        );
+        name = nameField.getText();
+        surname = apellidosField.getText();
+        tel = telField.getText();
+        nickName = userField.getText();
+        password = passwordField.getText();
+        creditC = tarjetaField.getText();
+        
+        ccv = Integer.parseInt(cvvField.getText());
+        
         
        
+        
+        
+        
+       /* acceptButton.disableProperty().bind(
+                Bindings.not(validFields)
+        );*/
     }    
 
     @FXML
-    private void clickAccept(MouseEvent event) {
-        
+    private void clickAccept(MouseEvent event) throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPistas.fxml"));
+                Parent root = loader.load();
+                
+                
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("Pistas");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+                
+                
+                 try {
+                    club.registerMember(name, surname, tel, nickName, password, creditC, ccv, null);
+                } catch (ClubDAOException ex) {
+                    Logger.getLogger(FXMLRegistro.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                 
+                 
+                acceptButton.getScene().getWindow().hide();
         
     }
 
@@ -347,10 +408,10 @@ public class FXMLRegistro implements Initializable {
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
                 stage.setScene(scene);
-                stage.setTitle("Registro");
+                stage.setTitle("Página Inicial");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
-                acceptButton.getScene().getWindow().hide();
+                cancelButton.getScene().getWindow().hide();
     }
     
 
