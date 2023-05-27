@@ -4,6 +4,8 @@
  */
 package controladores;
 
+import io.github.palexdev.materialfx.controls.MFXPasswordField;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -69,46 +71,47 @@ public class FXMLRegistro implements Initializable {
     @FXML
     private Button cancelButton;
     @FXML
+    private TextField dniField;
+    @FXML
+    private Label dniAlert;
+    @FXML
     private TextField emailField;
     @FXML
     private Label emailAlert;
+    @FXML
+    private TextField nameField;
+    @FXML
+    private Label nameAlert;
     @FXML
     private PasswordField passwordField;
     @FXML
     private Label passwordAlert;
     @FXML
+    private TextField apellidosField;
+    @FXML
+    private Label apellidosAlert;
+    @FXML
     private PasswordField repeatField;
     @FXML
     private Label repeatAlert;
     @FXML
-    private TextField dniField;
-    @FXML
-    private Label dniAlert;
-    @FXML
-    private Label cvvAlert;
-    @FXML
-    private Label tarjetaAlert;
-    @FXML
-    private TextField nameField;
-    @FXML
     private TextField userField;
-    @FXML
-    private PasswordField cvvField;
-    @FXML
-    private TextField tarjetaField;
-    @FXML
-    private Label nameAlert;
-    @FXML
-    private TextField apellidosField;
-    @FXML
-    private Label apellidosAlert;
     @FXML
     private Label userAlert;
     @FXML
     private TextField telField;
     @FXML
     private Label telAlert;
-    
+    @FXML
+    private PasswordField cvvField;
+    @FXML
+    private Label cvvAlert;
+    @FXML
+    private TextField tarjetaField;
+    @FXML
+    private Label tarjetaAlert;
+
+  
    
        
 
@@ -230,17 +233,6 @@ public class FXMLRegistro implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        
-       
-        
-        try {
-            club= Club.getInstance();
-        } catch (ClubDAOException ex) {
-            Logger.getLogger(FXMLRegistro.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(FXMLRegistro.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
         // TODO
         validEmail = new SimpleBooleanProperty();
         validEmail.setValue(Boolean.FALSE);
@@ -342,31 +334,18 @@ public class FXMLRegistro implements Initializable {
                 .and(validCVV).and(validApellidos).and(validName)
                 .and(validUser).and(validDNI).and(validTarjeta).and(validTel)
                  .and(equalPasswords);
-         
-
-        name = nameField.getText();
-        surname = apellidosField.getText();
-        tel = telField.getText();
-        nickName = userField.getText();
-        password = passwordField.getText();
-        creditC = tarjetaField.getText();
-        
-        ccv = Integer.parseInt(cvvField.getText());
-        
-        
-       
         
         
         
-       /* acceptButton.disableProperty().bind(
-                Bindings.not(validFields)
-        );*/
+        acceptButton.disableProperty().bind(Bindings.not(validFields));
     }    
 
     @FXML
-    private void clickAccept(MouseEvent event) throws IOException {
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPistas.fxml"));
+    private void clickAccept(MouseEvent event) throws IOException, ClubDAOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
                 Parent root = loader.load();
+                
+                
                 
                 
                 Scene scene = new Scene(root);
@@ -376,9 +355,28 @@ public class FXMLRegistro implements Initializable {
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
                 
+                 name = nameField.getText();
+                surname = apellidosField.getText();
+                tel = telField.getText();
+                nickName = userField.getText();
+                 password = passwordField.getText();
+                 creditC = tarjetaField.getText();
+        
                 
+                     ccv = Integer.valueOf(cvvField.getText());
+              
+                    
+                    
+                    /* for(char c : cvvField.getText().toCharArray()){
+                      if (!Character.isDigit(c)){
+                      manageError(cvvAlert, cvvField, validCVV);
+                      }
+                  }
+                      manageCorrect(cvvAlert, cvvField, validCVV);
+                 }
+                */
                  try {
-                    club.registerMember(name, surname, tel, nickName, password, creditC, ccv, null);
+                    Member nuevoMiembro = club.registerMember(name, surname, tel, nickName, password, creditC, ccv, null);
                 } catch (ClubDAOException ex) {
                     Logger.getLogger(FXMLRegistro.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -413,6 +411,7 @@ public class FXMLRegistro implements Initializable {
                 stage.show();
                 cancelButton.getScene().getWindow().hide();
     }
+
     
 
     
