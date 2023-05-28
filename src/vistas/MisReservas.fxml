@@ -21,7 +21,7 @@
                   <Separator prefHeight="30.0" prefWidth="32.0" />
                   <Button fx:id="botonVolver" mnemonicParsing="false" onAction="#clickVolver" text="Volver" />
                   <Separator prefHeight="30.0" prefWidth="295.0" />
-                  <Label fx:id="NombreUsuario" text="Nombre de Usuario">
+                  <Label fx:id="NombreUsuario" style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Nombre de Usuario">
                      <font>
                         <Font size="15.0" />
                      </font>

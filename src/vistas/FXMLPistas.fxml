@@ -19,7 +19,7 @@
             <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" stylesheets="@../CSS/style%20-%20ejemplo.css" BorderPane.alignment="CENTER">
               <items>
                   <Separator prefHeight="30.0" prefWidth="32.0" />
-                <Button mnemonicParsing="false" text="Cerrar Sesión" />
+                <Button fx:id="bVolver" mnemonicParsing="false" onAction="#clickVolver" text="Volver" />
                   <Separator prefHeight="30.0" prefWidth="481.0" />
                   <TextField alignment="CENTER" text="Nombre De Usuario" />
               </items>
@@ -41,7 +41,7 @@
                 <RowConstraints maxHeight="55.0" minHeight="7.0" prefHeight="35.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Pista 1" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Button alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#clickPista1" prefHeight="100.0" prefWidth="100.0" text="Pista 1" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="90.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -50,7 +50,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="TOP" maxWidth="100.0" mnemonicParsing="false" prefHeight="100.0" text="Pista 3" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <Button contentDisplay="TOP" maxWidth="100.0" mnemonicParsing="false" onAction="#clickPista3" prefHeight="100.0" text="Pista 3" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="90.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -59,7 +59,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="TOP" maxWidth="100.0" mnemonicParsing="false" prefHeight="100.0" text="Pista 5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Button contentDisplay="TOP" maxWidth="100.0" mnemonicParsing="false" onAction="#clickPista5" prefHeight="100.0" text="Pista 5" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="90.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -68,7 +68,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Pista 2" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#clickPista2" prefHeight="100.0" prefWidth="100.0" text="Pista 2" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="90.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -77,7 +77,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Pista 4" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#clickPista4" prefHeight="100.0" prefWidth="100.0" text="Pista 4" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="90.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -86,7 +86,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Pista 6" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#clickPista6" prefHeight="100.0" prefWidth="100.0" text="Pista 6" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="90.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <image>
