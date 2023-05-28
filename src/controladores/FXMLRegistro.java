@@ -342,32 +342,16 @@ public class FXMLRegistro implements Initializable {
 
     @FXML
     private void clickAccept(MouseEvent event) throws IOException, ClubDAOException {
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
-                Parent root = loader.load();
-                
-                
-                
-                
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Pistas");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                
-                 name = nameField.getText();
+               /* name = nameField.getText();
                 surname = apellidosField.getText();
                 tel = telField.getText();
                 nickName = userField.getText();
-                 password = passwordField.getText();
-                 creditC = tarjetaField.getText();
+                password = passwordField.getText();
+                creditC = tarjetaField.getText();
         
                 
-                     ccv = Integer.valueOf(cvvField.getText());
-              
-                    
-                    
-                    /* for(char c : cvvField.getText().toCharArray()){
+                ccv = Integer.valueOf(cvvField.getText());
+                  for(char c : cvvField.getText().toCharArray()){
                       if (!Character.isDigit(c)){
                       manageError(cvvAlert, cvvField, validCVV);
                       }
@@ -375,15 +359,33 @@ public class FXMLRegistro implements Initializable {
                       manageCorrect(cvvAlert, cvvField, validCVV);
                  }
                 */
+                 
                  try {
-                    Member nuevoMiembro = club.registerMember(name, surname, tel, nickName, password, creditC, ccv, null);
+                    name = nameField.textProperty().getValueSafe();
+                    surname = apellidosField.textProperty().getValueSafe();
+                    tel = telField.textProperty().getValueSafe();
+                    nickName = userField.textProperty().getValueSafe();
+                    password = passwordField.textProperty().getValueSafe();
+                    creditC = tarjetaField.textProperty().getValueSafe();
+                    ccv = Integer.parseInt(cvvField.textProperty().getValueSafe());
+                    
+                    
+                    Club.getInstance().registerMember(name, surname, tel, nickName, password, creditC, ccv, null);
                 } catch (ClubDAOException ex) {
                     Logger.getLogger(FXMLRegistro.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                 
-                 
-                acceptButton.getScene().getWindow().hide();
         
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("Pistas");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+               
+                acceptButton.getScene().getWindow().hide();
+                
     }
 
     @FXML
