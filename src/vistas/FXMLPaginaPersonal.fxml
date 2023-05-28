@@ -13,7 +13,7 @@
 
 <Pane prefHeight="607.0" prefWidth="943.0" styleClass="background" stylesheets="@../CSS/style%20-%20ejemplo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.FXMLPaginaPersonalController">
    <children>
-      <BorderPane layoutX="8.0" layoutY="-4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="943.0" stylesheets="@../CSS/Botones.css">
+      <BorderPane layoutX="21.0" layoutY="-4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="943.0" stylesheets="@../CSS/Botones.css">
          <top>
             <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="165.0" stylesheets="@../CSS/style%20-%20ejemplo.css" BorderPane.alignment="CENTER">
                <items>
@@ -45,7 +45,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton prefHeight="64.0" prefWidth="167.0">
+                  <MFXButton fx:id="verDispButton" onAction="#clickVerDisp" prefHeight="64.0" prefWidth="167.0">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
@@ -53,16 +53,16 @@
                         <VBox prefHeight="49.0" prefWidth="160.0">
                            <children>
                               <Label prefHeight="27.0" prefWidth="148.0" text="Ver disponibilidad" textFill="WHITE" />
-                              <Label fx:id="verDispButton" onDragDetected="#clickVerDisp" prefHeight="22.0" prefWidth="111.0" text="de las pistas" textFill="WHITE" />
+                              <Label prefHeight="22.0" prefWidth="111.0" text="de las pistas" textFill="WHITE" />
                            </children>
                         </VBox>
                      </graphic>
                   </MFXButton>
-                  <MFXButton prefHeight="64.0" prefWidth="167.0">
+                  <MFXButton fx:id="actButton" onAction="#clickAct" prefHeight="64.0" prefWidth="167.0">
                      <graphic>
                         <VBox prefHeight="49.0" prefWidth="160.0">
                            <children>
-                              <Label fx:id="ActButton" onDragDetected="#clickAct" prefHeight="27.0" prefWidth="148.0" text="Actualizar datos" textFill="WHITE" />
+                              <Label prefHeight="27.0" prefWidth="148.0" text="Actualizar datos" textFill="WHITE" />
                               <Label prefHeight="22.0" prefWidth="111.0" text="de socio" textFill="WHITE" />
                            </children>
                         </VBox>
