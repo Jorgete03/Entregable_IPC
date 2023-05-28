@@ -40,11 +40,6 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton fx:id="anulButton" onAction="#clickAnul" prefHeight="42.0" prefWidth="168.0" text="Anular reserva">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
-                  </MFXButton>
                   <MFXButton fx:id="verDispButton" onAction="#clickVerDisp" prefHeight="64.0" prefWidth="167.0">
                      <VBox.margin>
                         <Insets bottom="10.0" />
