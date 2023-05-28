@@ -23,7 +23,7 @@ import javafx.stage.Stage;
  * @author julio
  */
 public class FXMLPaginaInicialController implements Initializable {
-
+    int id=1;
     @FXML
     private Button botonRegistro;
     @FXML
@@ -45,6 +45,9 @@ public class FXMLPaginaInicialController implements Initializable {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/Reservas.fxml"));
                 Parent root = loader.load();
                 
+                Reservas controlador2 = loader.getController();
+                controlador2.reconocerID(id);
+                       
                 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();

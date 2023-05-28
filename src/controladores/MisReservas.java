@@ -23,12 +23,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToolBar;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.Booking;
 import model.Club;
 import model.ClubDAOException;
+import model.Member;
 
 /**
  * FXML Controller class
@@ -37,6 +39,7 @@ import model.ClubDAOException;
  */
 public class MisReservas implements Initializable {
     Club club;
+    Member member;
     
     @FXML
     private Button botonVolver;
@@ -46,6 +49,8 @@ public class MisReservas implements Initializable {
     private Button bBorrar;
     @FXML
     private Label NombreUsuario;
+    @FXML
+    private ToolBar labelNickName;
 
     /**
      * Initializes the controller class.
@@ -57,8 +62,13 @@ public class MisReservas implements Initializable {
         } catch (IOException | ClubDAOException ex) {
             Logger.getLogger(Reservas.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         //club.setInitialData();
         //club.addSimpleData();
+        
+        //IMPORTANTE quitar comentario la terminar Registro
+        
+        //NombreUsuario.setText(member.getNickName());
         ArrayList<Booking> array = club.getBookings();
         ObservableList<Booking> reservas = FXCollections.observableArrayList(array);
         listVew1.setItems(reservas);
@@ -86,6 +96,10 @@ public class MisReservas implements Initializable {
 
     @FXML
     private void clickBorrar(ActionEvent event) {
+    }
+
+    void setMiembro(Member miembro) {
+        member = miembro;// Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

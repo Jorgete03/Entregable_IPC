@@ -40,7 +40,7 @@ import model.ClubDAOException;
  * @author LENOVO
  */
 public class Reservas implements Initializable {
-
+    int id;
     
     Club club;
     private ObservableList<Booking> reservas;
@@ -65,15 +65,15 @@ public class Reservas implements Initializable {
         } catch (IOException | ClubDAOException ex) {
             Logger.getLogger(Reservas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        club.setInitialData();//Para borrar la prueba
-        club.addSimpleData();//Para probar la listview
+        //club.setInitialData();//Para borrar la prueba
+        //club.addSimpleData();//Para probar la listview
         ArrayList<Booking> array = club.getBookings();
         reservas = FXCollections.observableArrayList(array);
         listView1.setItems(reservas);
         listView1.setCellFactory(new Callback<ListView<Booking>, ListCell<Booking>>() {
             @Override
             public ListCell<Booking> call(ListView<Booking> listView) {
-                return new BookingCell();
+                return new BookingCells1();
             }
         });
         
@@ -83,6 +83,7 @@ public class Reservas implements Initializable {
 
     @FXML
     private void clickVolver(ActionEvent event) throws IOException {
+        if (id==1){
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaInicial.fxml"));
                 Parent root = loader.load();
                 
@@ -94,6 +95,22 @@ public class Reservas implements Initializable {
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
                 botonVolver.getScene().getWindow().hide();
+        
+        }
+        if (id ==2){
+            FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
+                Parent root = loader.load();
+                
+                
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("Registro");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+                botonVolver.getScene().getWindow().hide();
+        
+        }
     }
 
     @FXML
@@ -105,10 +122,12 @@ public class Reservas implements Initializable {
         String name = nombreUsuario.getText();
     for (int i = currentIndex + 1; i < listView1.getItems().size(); i++) {
         Booking booking = listView1.getItems().get(i);
+        if(i==listView1.getItems().size()-1){i=0;}
         if (booking.getMember().getNickName().equals(name)) {
             listView1.getSelectionModel().select(booking);
             currentIndex = i;
             scrollToSelectedElement();
+            
             break;
         }
     }
@@ -128,20 +147,22 @@ public class Reservas implements Initializable {
             String name = nombreUsuario.getText();
     for (int i = currentIndex + 1; i < listView1.getItems().size(); i++) {
         Booking booking = listView1.getItems().get(i);
+        if(i==listView1.getItems().size()-1){i=0;}
         if (booking.getMember().getNickName().equals(name)) {
             listView1.getSelectionModel().select(booking);
             currentIndex = i;
             scrollToSelectedElement();
             break;
+                }
+            }
         }
     }
-    
 
-    
-        }
+    void reconocerID(int idd) {
+        id = idd;
     }
 }
-/*class BookingCells extends ListCell<Booking> {
+class BookingCells1 extends ListCell<Booking> {
 
 @Override
 protected void updateItem(Booking t, boolean bln) {
@@ -150,11 +171,11 @@ protected void updateItem(Booking t, boolean bln) {
         {
             setText("");
         } else {
-            setText(t.getMember().getNickName() + " " +t.getCourt().getName() + " " + t.getBookingDate().toString());
+            setText("Usuario: " + t.getMember().getNickName() + " " +t.getCourt().getName() + " Día: " + t.getMadeForDay().toString() + " Hora: " + t.getFromTime().toString());
         }
 
 }
-}*/
+}
 
 
 
