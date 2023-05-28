@@ -24,6 +24,8 @@ import javafx.scene.control.Cell;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -41,8 +43,6 @@ public class Reservas implements Initializable {
 
     
     Club club;
-    @FXML
-    private ListView<Booking> listVew1;
     private ObservableList<Booking> reservas;
     @FXML
     private Button botonVolver;
@@ -51,6 +51,8 @@ public class Reservas implements Initializable {
     @FXML
     private Button bBuscar;
     private int currentIndex = -1;
+    @FXML
+    private ListView<Booking> listView1;
 
     /**
      * Initializes the controller class.
@@ -63,12 +65,12 @@ public class Reservas implements Initializable {
         } catch (IOException | ClubDAOException ex) {
             Logger.getLogger(Reservas.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //club.setInitialData();
-        club.addSimpleData();
+        club.setInitialData();//Para borrar la prueba
+        club.addSimpleData();//Para probar la listview
         ArrayList<Booking> array = club.getBookings();
         reservas = FXCollections.observableArrayList(array);
-        listVew1.setItems(reservas);
-        listVew1.setCellFactory(new Callback<ListView<Booking>, ListCell<Booking>>() {
+        listView1.setItems(reservas);
+        listView1.setCellFactory(new Callback<ListView<Booking>, ListCell<Booking>>() {
             @Override
             public ListCell<Booking> call(ListView<Booking> listView) {
                 return new BookingCell();
@@ -101,18 +103,43 @@ public class Reservas implements Initializable {
     @FXML
     private void clickBuscar(ActionEvent event) {
         String name = nombreUsuario.getText();
-    for (int i = currentIndex + 1; i < listVew1.getItems().size(); i++) {
-        Booking booking = listVew1.getItems().get(i);
+    for (int i = currentIndex + 1; i < listView1.getItems().size(); i++) {
+        Booking booking = listView1.getItems().get(i);
         if (booking.getMember().getNickName().equals(name)) {
-            listVew1.getSelectionModel().select(booking);
+            listView1.getSelectionModel().select(booking);
             currentIndex = i;
+            scrollToSelectedElement();
             break;
         }
     }
 
     }
+    
+    private void scrollToSelectedElement() {
+        int selectedIndex = listView1.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            listView1.scrollTo(selectedIndex);
+        }
+    }
+
+    @FXML
+    private void pEnter(KeyEvent event) {
+        if (event.getCode()== KeyCode.ENTER){
+            String name = nombreUsuario.getText();
+    for (int i = currentIndex + 1; i < listView1.getItems().size(); i++) {
+        Booking booking = listView1.getItems().get(i);
+        if (booking.getMember().getNickName().equals(name)) {
+            listView1.getSelectionModel().select(booking);
+            currentIndex = i;
+            scrollToSelectedElement();
+            break;
+        }
+    }
+    
 
     
+        }
+    }
 }
 /*class BookingCells extends ListCell<Booking> {
 
