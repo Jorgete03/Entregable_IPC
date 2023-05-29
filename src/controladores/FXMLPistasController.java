@@ -63,13 +63,8 @@ public class FXMLPistasController implements Initializable {
                 segundoController.setPistaSeleccionada(pistaseleccionada);
                 segundoController.setMiembro(member);
                 
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Registro");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                bVolver.getScene().getWindow().hide();
+                
+                bVolver.getScene().setRoot(root);
         
     }
 
@@ -88,13 +83,8 @@ public class FXMLPistasController implements Initializable {
                 segundoController.setPistaSeleccionada(pistaseleccionada);
                 segundoController.setMiembro(member);
                 
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Registro");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                bVolver.getScene().getWindow().hide();
+                
+                bVolver.getScene().setRoot(root);
     }
 
     @FXML
@@ -112,13 +102,8 @@ public class FXMLPistasController implements Initializable {
                 segundoController.setPistaSeleccionada(pistaseleccionada);
                 segundoController.setMiembro(member);
                 
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Registro");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                bVolver.getScene().getWindow().hide();
+               
+                bVolver.getScene().setRoot(root);
     }
 
     @FXML
@@ -136,13 +121,8 @@ public class FXMLPistasController implements Initializable {
                 segundoController.setPistaSeleccionada(pistaseleccionada);
                 segundoController.setMiembro(member);
                 
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Registro");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                bVolver.getScene().getWindow().hide();
+                
+                bVolver.getScene().setRoot(root);
     }
 
     @FXML
@@ -160,13 +140,8 @@ public class FXMLPistasController implements Initializable {
                 segundoController.setPistaSeleccionada(pistaseleccionada);
                 segundoController.setMiembro(member);
                 
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Registro");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                bVolver.getScene().getWindow().hide();
+                
+                bVolver.getScene().setRoot(root);
     }
 
     @FXML
@@ -184,13 +159,8 @@ public class FXMLPistasController implements Initializable {
                 segundoController.setPistaSeleccionada(pistaseleccionada);
                 segundoController.setMiembro(member);
                 
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Registro");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                bVolver.getScene().getWindow().hide();
+               
+                bVolver.getScene().setRoot(root);
     }
 
     void setPistaSeleccionada(Member miembro) {
@@ -203,13 +173,8 @@ public class FXMLPistasController implements Initializable {
                 Parent root = loader.load();
                 
                 
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Pagina Personal");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                bVolver.getScene().getWindow().hide();
+                
+                bVolver.getScene().setRoot(root);
     }
     
 }

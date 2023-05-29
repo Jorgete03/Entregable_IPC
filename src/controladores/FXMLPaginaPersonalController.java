@@ -62,13 +62,8 @@ public class FXMLPaginaPersonalController implements Initializable {
                 FXMLPistasController segundoController = loader.getController();
                 segundoController.setPistaSeleccionada(member);
                 
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Pistas");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                reservButton.getScene().getWindow().hide();
+               
+                reservButton.getScene().setRoot(root);
     }
 
     @FXML
@@ -79,13 +74,8 @@ public class FXMLPaginaPersonalController implements Initializable {
                MisReservas segundoController = loader.getController();
                 segundoController.setMiembro(member);
                 
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("MisReservas");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                verResButton.getScene().getWindow().hide(); 
+               
+                verResButton.getScene().setRoot(root); 
     }
 
     
@@ -97,26 +87,16 @@ public class FXMLPaginaPersonalController implements Initializable {
                 Reservas controlador2 = loader.getController();
                 controlador2.reconocerID(id);
                 
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Reservas");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                verDispButton.getScene().getWindow().hide();
+               
+                verDispButton.getScene().setRoot(root);
     }
 
     @FXML
     private void clickAct(ActionEvent event)throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLRegistro.fxml"));
                 Parent root = loader.load();
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Registro");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                actButton.getScene().getWindow().hide();
+                
+                actButton.getScene().setRoot(root);
     }
 
     void setMember(Member memberByCredentials) {
@@ -128,13 +108,8 @@ public class FXMLPaginaPersonalController implements Initializable {
     private void clickCerrarSesion(ActionEvent event) throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaInicial.fxml"));
                 Parent root = loader.load();
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Pagina Inicial");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                actButton.getScene().getWindow().hide();
+                
+                actButton.getScene().setRoot(root);
         
     }
     

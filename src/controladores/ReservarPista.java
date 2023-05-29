@@ -91,15 +91,7 @@ public class ReservarPista implements Initializable {
     private void clickVolver(ActionEvent event) throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPistas.fxml"));
                 Parent root = loader.load();
-                
-                
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Registro");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                botonVolver.getScene().getWindow().hide();
+                botonVolver.getScene().setRoot(root);
     }
 
 

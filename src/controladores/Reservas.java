@@ -86,29 +86,13 @@ public class Reservas implements Initializable {
         if (id==1){
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaInicial.fxml"));
                 Parent root = loader.load();
-                
-                
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Registro");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                botonVolver.getScene().getWindow().hide();
+                botonVolver.getScene().setRoot(root);
         
         }
         if (id ==2){
             FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
-                Parent root = loader.load();
-                
-                
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Registro");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                botonVolver.getScene().getWindow().hide();
+            Parent root = loader.load();  
+            botonVolver.getScene().setRoot(root);
         
         }
     }

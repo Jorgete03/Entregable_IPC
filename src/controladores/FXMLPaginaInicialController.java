@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -49,42 +50,25 @@ public class FXMLPaginaInicialController implements Initializable {
                 controlador2.reconocerID(id);
                        
                 
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Registro");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                botonRegistro.getScene().getWindow().hide();
+               
+                botonRegistro.getScene().setRoot(root);
     }
 
     @FXML
     private void clickRegistrarse(ActionEvent event) throws IOException {
          FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLRegistro.fxml"));
-                Parent root = loader.load();
-                
-                
-                Scene scene = new Scene(root);
+                Parent nodo = loader.load();
                 Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Registro");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                botonRegistro.getScene().getWindow().hide();
+                botonRegistro.getScene().setRoot(nodo);
     }
 
     @FXML
     private void clickInicioSesion(ActionEvent event) throws IOException {
                 FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLInicioDeSesión.fxml"));
                 Parent root = loader.load();
-                
-                Scene scene = new Scene(root);
                 Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Inicio");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                botonInicio.getScene().getWindow().hide();
+              
+                botonInicio.getScene().setRoot(root);
     }
     
 }

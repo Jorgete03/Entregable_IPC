@@ -361,30 +361,27 @@ public class FXMLRegistro implements Initializable {
                 */
                  
                  try {
-                    name = nameField.textProperty().getValueSafe();
-                    surname = apellidosField.textProperty().getValueSafe();
-                    tel = telField.textProperty().getValueSafe();
-                    nickName = userField.textProperty().getValueSafe();
-                    password = passwordField.textProperty().getValueSafe();
-                    creditC = tarjetaField.textProperty().getValueSafe();
-                    ccv = Integer.parseInt(cvvField.textProperty().getValueSafe());
-                    
-                    
-                    Club.getInstance().registerMember(name, surname, tel, nickName, password, creditC, ccv, null);
+                    name = nameField.getText();
+                    surname = apellidosField.getText();
+                    tel = telField.getText();
+                    nickName = userField.getText();
+                    password = passwordField.getText();
+                    creditC = tarjetaField.getText();
+                    ccv = Integer.parseInt(cvvField.getText());
+                    if (Club.getInstance().existsLogin(nickName)){
+                        manageError(userAlert,userField,validUser);
+                    } else{
+                                         
+                        Club.getInstance().registerMember(name, surname, tel, nickName, password, creditC, ccv, null);
+                    }
                 } catch (ClubDAOException ex) {
                     Logger.getLogger(FXMLRegistro.class.getName()).log(Level.SEVERE, null, ex);
                 }
         
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
                 Parent root = loader.load();
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Pistas");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
                
-                acceptButton.getScene().getWindow().hide();
+                acceptButton.getScene().setRoot(root);
                 
     }
 
@@ -403,15 +400,7 @@ public class FXMLRegistro implements Initializable {
     private void clickCancel(MouseEvent event) throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaInicial.fxml"));
                 Parent root = loader.load();
-                
-                
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("Página Inicial");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                cancelButton.getScene().getWindow().hide();
+                cancelButton.getScene().setRoot(root);
     }
 
     
