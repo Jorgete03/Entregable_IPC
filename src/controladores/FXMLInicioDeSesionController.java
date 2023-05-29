@@ -55,14 +55,14 @@ public class FXMLInicioDeSesionController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
+        /*try {
             // TODO
             club.getInstance();
         } catch (ClubDAOException ex) {
             Logger.getLogger(FXMLInicioDeSesionController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(FXMLInicioDeSesionController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         
     }    
 
@@ -70,9 +70,9 @@ public class FXMLInicioDeSesionController implements Initializable {
     @FXML
     private void clickAccept(MouseEvent event) throws IOException, ClubDAOException {
         
-        member = Club.getInstance().getMemberByCredentials(nameField.getText(), passwordField.getText());
-           if(member==null){
-               FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
+        
+           if(Club.getInstance().getMemberByCredentials(nameField.getText(), passwordField.getText())==null){
+               /*FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
                 Parent root = loader.load();
                 //Paso el usuario a la siguiente página, de esta forma la siguiente tiene el inicio de sesión
                 //Hay q crear un objeto del tipo destino (FXMLPaginaPersonal) Y luego invocar un método del otro controlador al q le metas la variable que desees enviar. En este controlador invoco a setMember que está en controlador 2 y en el segundo lo guardas en una variable
@@ -85,13 +85,13 @@ public class FXMLInicioDeSesionController implements Initializable {
                 stage.setTitle("Inicio de Sesión");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
-                acceptButton.getScene().getWindow().hide();
+                acceptButton.getScene().getWindow().hide();*/
                
                nameField.setText("");
+               nameField.styleProperty().setValue("-fx-background-color: #FCE5E0");   
                passwordField.setText("");
+               passwordField.styleProperty().setValue("-fx-background-color: #FCE5E0");   
                mError.setVisible(true);
-               
-               
            }
            else{
                FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
@@ -109,13 +109,8 @@ public class FXMLInicioDeSesionController implements Initializable {
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
                 acceptButton.getScene().getWindow().hide();
+                
            }
-           
-           
-           
-           
-    
-        
     }
         
    
