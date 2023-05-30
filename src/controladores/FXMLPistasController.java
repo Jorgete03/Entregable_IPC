@@ -4,6 +4,7 @@
  */
 package controladores;
 
+import static controladores.FXMLRegistro.member;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Club;
@@ -32,12 +34,14 @@ import model.Member;
 public class FXMLPistasController implements Initializable {
     Club club;
     Court pistaseleccionada;
-    Member member;
+   
     
     
     
     @FXML
     private Button bVolver;
+    @FXML
+    private Label labelField;
     
     /**
      * Initializes the controller class.
@@ -45,6 +49,7 @@ public class FXMLPistasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        labelField.setText(member.getNickName());
 
     }    
 

@@ -63,6 +63,7 @@ public class FXMLRegistro implements Initializable {
     int ccv;
     String tel;
     
+    public static Member member;
     Club club;
     
     private final int EQUALS = 0;
@@ -360,7 +361,7 @@ public class FXMLRegistro implements Initializable {
                  }
                 */
                  
-                 try {
+                 /*try {
                     name = nameField.getText();
                     surname = apellidosField.getText();
                     tel = telField.getText();
@@ -372,7 +373,34 @@ public class FXMLRegistro implements Initializable {
                         manageError(userAlert,userField,validUser);
                     } else{
                                          
-                        Club.getInstance().registerMember(name, surname, tel, nickName, password, creditC, ccv, null);
+                       Member m = Club.getInstance().registerMember(name, surname, tel, nickName, password, creditC, ccv, null);
+                    }
+                } catch (ClubDAOException ex) {
+                    Logger.getLogger(FXMLRegistro.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
+                Parent root = loader.load();
+               
+                acceptButton.getScene().setRoot(root);*/
+                
+    }
+
+    @FXML
+    private void handleBAcceptOnAction(ActionEvent event) throws IOException {
+        try {
+                    name = nameField.getText();
+                    surname = apellidosField.getText();
+                    tel = telField.getText();
+                    nickName = userField.getText();
+                    password = passwordField.getText();
+                    creditC = tarjetaField.getText();
+                    ccv = Integer.parseInt(cvvField.getText());
+                    if (Club.getInstance().existsLogin(nickName)){
+                        manageError(userAlert,userField,validUser);
+                    } else{
+                                         
+                       member = Club.getInstance().registerMember(name, surname, tel, nickName, password, creditC, ccv, null);
                     }
                 } catch (ClubDAOException ex) {
                     Logger.getLogger(FXMLRegistro.class.getName()).log(Level.SEVERE, null, ex);
@@ -382,18 +410,16 @@ public class FXMLRegistro implements Initializable {
                 Parent root = loader.load();
                
                 acceptButton.getScene().setRoot(root);
-                
-    }
-
-    @FXML
-    private void handleBAcceptOnAction(ActionEvent event) {
         emailField.textProperty().setValue("");
         passwordField.textProperty().setValue("");
         repeatField.textProperty().setValue("");
         
         validEmail.setValue(Boolean.FALSE);
+        
         validPassword.setValue(Boolean.FALSE);
         equalPasswords.setValue(Boolean.FALSE);
+        
+        
     }
 
     @FXML

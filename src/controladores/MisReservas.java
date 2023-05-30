@@ -4,6 +4,7 @@
  */
 package controladores;
 
+import static controladores.FXMLRegistro.member;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -39,8 +40,7 @@ import model.Member;
  */
 public class MisReservas implements Initializable {
     Club club;
-    Member member;
-    
+   
     @FXML
     private Button botonVolver;
     @FXML
@@ -55,6 +55,8 @@ public class MisReservas implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
@@ -68,7 +70,7 @@ public class MisReservas implements Initializable {
         
         //IMPORTANTE quitar comentario la terminar Registro
         
-        //NombreUsuario.setText(member.getNickName());
+        NombreUsuario.setText(member.getNickName());
         ArrayList<Booking> array = club.getBookings();
         ObservableList<Booking> reservas = FXCollections.observableArrayList(array);
         listVew1.setItems(reservas);

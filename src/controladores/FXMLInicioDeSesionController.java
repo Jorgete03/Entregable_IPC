@@ -4,6 +4,7 @@
  */
 package controladores;
 
+import static controladores.FXMLRegistro.member;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.net.URL;
@@ -36,7 +37,7 @@ import model.Member;
 public class FXMLInicioDeSesionController implements Initializable {
 
     Club club;
-    Member member;
+    
     
     @FXML
     private Button acceptButton;
@@ -53,6 +54,7 @@ public class FXMLInicioDeSesionController implements Initializable {
     /**
      * Initializes the controller class.
      */
+
     @Override
     public void initialize(URL url, ResourceBundle rb) { 
         
@@ -61,7 +63,8 @@ public class FXMLInicioDeSesionController implements Initializable {
 
     @FXML
     private void clickAccept(MouseEvent event) throws IOException, ClubDAOException {
-        
+        String nick = nameField.getText();
+        String password = passwordField.getText();
         member = Club.getInstance().getMemberByCredentials(nameField.getText(), passwordField.getText());
            if(member==null){
               /* FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
@@ -91,8 +94,7 @@ public class FXMLInicioDeSesionController implements Initializable {
                 //Paso el usuario a la siguiente página, de esta forma la siguiente tiene el inicio de sesión
                 //Hay q crear un objeto del tipo destino (FXMLPaginaPersonal) Y luego invocar un método del otro controlador al q le metas la variable que desees enviar. En este controlador invoco a setMember que está en controlador 2 y en el segundo lo guardas en una variable
                 FXMLPaginaPersonalController controlador2 = loader.getController();
-                controlador2.setMember(club.getMemberByCredentials(nameField.getText(), passwordField.getText()));
-                
+                controlador2.setMember(club.getInstance().getMemberByCredentials(nick, password));
                 
                 acceptButton.getScene().setRoot(root);
            }

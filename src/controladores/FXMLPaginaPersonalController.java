@@ -4,6 +4,8 @@
  */
 package controladores;
 
+
+import static controladores.FXMLRegistro.member;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.io.IOException;
 import java.net.URL;
@@ -31,7 +33,7 @@ import model.Member;
 public class FXMLPaginaPersonalController implements Initializable {
     int id = 2;
     Club club;
-    Member member;
+    
     @FXML
     private Button CerButton;
     @FXML
@@ -51,7 +53,7 @@ public class FXMLPaginaPersonalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        //labelNickName.setText(member.getNickName());
+       labelNickName.setText(member.getNickName());
         
     }    
 

@@ -4,6 +4,7 @@
  */
 package controladores;
 
+import static controladores.FXMLRegistro.member;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -48,7 +49,7 @@ public class ReservarPista implements Initializable {
     int currentIndex;
     Club club;
     Court court;
-    Member member;
+   
     private ObservableList<LocalTime> hora;
     @FXML
     private MFXButton botonVolver;
