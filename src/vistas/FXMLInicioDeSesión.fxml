@@ -39,7 +39,7 @@
                      <children>
                         <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="70.0" prefWidth="331.0">
                            <children>
-                              <MFXTextField fx:id="nameField" floatingText="Nombre de Usuario" prefHeight="50.0" prefWidth="368.0" />
+                              <MFXTextField fx:id="nameField" floatingText="Nombre de Usuario" onKeyPressed="#pEnterNombre" prefHeight="50.0" prefWidth="368.0" />
                            </children>
                         </VBox>
                      </children>
@@ -51,7 +51,7 @@
                      <children>
                         <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="87.0" prefWidth="331.0">
                            <children>
-                              <MFXPasswordField fx:id="passwordField" floatingText="Contraseña" prefHeight="50.0" prefWidth="351.0" />
+                              <MFXPasswordField fx:id="passwordField" floatingText="Contraseña" onKeyPressed="#pEnter" prefHeight="50.0" prefWidth="351.0" />
                            </children>
                         </VBox>
                      </children>
