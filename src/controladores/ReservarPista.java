@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 package controladores;
-
+import static controladores.FXMLPistasController.pistaseleccionada;
 import static controladores.FXMLRegistro.member;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
@@ -101,8 +101,10 @@ public class ReservarPista implements Initializable {
 
     @FXML
     private void clickReservar(ActionEvent event) throws ClubDAOException, IOException {
-        club.getInstance();
-        club.registerBooking(LocalDateTime.now(), menuDia.getValue(), listView.getSelectionModel().getSelectedItem(), false, court, member);
+        LocalDate dia = menuDia.getValue();
+        LocalTime hora1 = listView.getSelectionModel().getSelectedItem();
+        LocalDateTime momento = LocalDateTime.now();
+        club.getInstance().registerBooking(momento, dia, hora1, false, pistaseleccionada, member);
     }
 
     @FXML

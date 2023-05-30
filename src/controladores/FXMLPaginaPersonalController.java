@@ -95,8 +95,10 @@ public class FXMLPaginaPersonalController implements Initializable {
 
     @FXML
     private void clickAct(ActionEvent event)throws IOException {
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLRegistro.fxml"));
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/ActualizarDatos.fxml"));
                 Parent root = loader.load();
+                ActualizarDatos segundoController = loader.getController();
+                segundoController.setMiembro(member);
                 
                 actButton.getScene().setRoot(root);
     }

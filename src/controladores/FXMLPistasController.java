@@ -4,6 +4,7 @@
  */
 package controladores;
 
+
 import static controladores.FXMLRegistro.member;
 import java.io.IOException;
 import java.net.URL;
@@ -33,7 +34,7 @@ import model.Member;
 
 public class FXMLPistasController implements Initializable {
     Club club;
-    Court pistaseleccionada;
+    public static Court pistaseleccionada;
    
     
     
@@ -56,7 +57,7 @@ public class FXMLPistasController implements Initializable {
     @FXML
     private void clickPista1(ActionEvent event) throws IOException {
         try {
-            pistaseleccionada = club.getInstance().getCourt("Pista1");
+            pistaseleccionada = club.getInstance().getCourt("Pista 1");
         } catch (ClubDAOException ex) {
             Logger.getLogger(FXMLPistasController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -76,7 +77,7 @@ public class FXMLPistasController implements Initializable {
     @FXML
     private void clickPista3(ActionEvent event) throws IOException {
         try {
-            pistaseleccionada = club.getInstance().getCourt("Pista3");
+            pistaseleccionada = club.getInstance().getCourt("Pista 3");
         } catch (ClubDAOException ex) {
             Logger.getLogger(FXMLPistasController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -95,7 +96,7 @@ public class FXMLPistasController implements Initializable {
     @FXML
     private void clickPista5(ActionEvent event) throws IOException {
         try {
-            pistaseleccionada = club.getInstance().getCourt("Pista5");
+            pistaseleccionada = club.getInstance().getCourt("Pista 5");
         } catch (ClubDAOException ex) {
             Logger.getLogger(FXMLPistasController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -114,7 +115,7 @@ public class FXMLPistasController implements Initializable {
     @FXML
     private void clickPista2(ActionEvent event) throws IOException {
         try {
-            pistaseleccionada = club.getInstance().getCourt("Pista2");
+            pistaseleccionada = club.getInstance().getCourt("Pista 2");
         } catch (ClubDAOException ex) {
             Logger.getLogger(FXMLPistasController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -133,7 +134,7 @@ public class FXMLPistasController implements Initializable {
     @FXML
     private void clickPista4(ActionEvent event) throws IOException {
         try {
-            pistaseleccionada = club.getInstance().getCourt("Pista4");
+            pistaseleccionada = club.getInstance().getCourt("Pista 4");
         } catch (ClubDAOException ex) {
             Logger.getLogger(FXMLPistasController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -152,7 +153,7 @@ public class FXMLPistasController implements Initializable {
     @FXML
     private void clickPista6(ActionEvent event) throws IOException {
         try {
-            pistaseleccionada = club.getInstance().getCourt("Pista6");
+            pistaseleccionada = club.getInstance().getCourt("Pista 6");
         } catch (ClubDAOException ex) {
             Logger.getLogger(FXMLPistasController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

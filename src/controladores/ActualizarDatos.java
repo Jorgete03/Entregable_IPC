@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 package controladores;
-
+import static controladores.FXMLRegistro.member;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
@@ -25,7 +26,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -37,15 +37,11 @@ import model.Member;
 /**
  * FXML Controller class
  *
- * @author julio
+ * @author LENOVO
  */
-
-
-public class FXMLRegistro implements Initializable {
-
+public class ActualizarDatos implements Initializable {
     
-    
-    private BooleanProperty validPassword;
+        private BooleanProperty validPassword;
     private BooleanProperty validEmail;
     private BooleanProperty equalPasswords; 
     private BooleanProperty validCVV;
@@ -63,15 +59,14 @@ public class FXMLRegistro implements Initializable {
     String creditC;
     int ccv;
     String tel;
-    
-    public static Member member;
     Club club;
     
-    private final int EQUALS = 0;
+     private final int EQUALS = 0;
+     
     @FXML
-    private Button acceptButton;
+    private MFXButton acceptButton;
     @FXML
-    private Button cancelButton;
+    private MFXButton cancelButton;
     @FXML
     private TextField dniField;
     @FXML
@@ -112,11 +107,11 @@ public class FXMLRegistro implements Initializable {
     private TextField tarjetaField;
     @FXML
     private Label tarjetaAlert;
-
-  
-   
-       
-
+    
+    /**
+     * Initializes the controller class.
+     */
+    
     private void manageError(Label errorLabel,TextField textField, BooleanProperty boolProp ){
         boolProp.setValue(Boolean.FALSE);
         showErrorMessage(errorLabel,textField);
@@ -230,13 +225,18 @@ public class FXMLRegistro implements Initializable {
             manageCorrect(repeatAlert, repeatField, equalPasswords);
         }
     }
-   
-     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
         // TODO
-        validEmail = new SimpleBooleanProperty();
+         nameField.setText(member.getName());
+         apellidosField.setText(member.getSurname());
+         userField.setText(member.getNickName());
+         cvvField.setText(String.valueOf(member.getSvc()));
+         passwordField.setText(member.getPassword());
+         telField.setText(member.getTelephone());
+         tarjetaField.setText(member.getCreditCard());
+         
+         validEmail = new SimpleBooleanProperty();
         validEmail.setValue(Boolean.FALSE);
         
         emailField.focusedProperty().addListener((observable, oldValue, newValue)->{
@@ -339,74 +339,34 @@ public class FXMLRegistro implements Initializable {
         
         
         
-        acceptButton.disableProperty().bind(Bindings.not(validFields));
+        
+         
     }    
 
-    @FXML
-    private void clickAccept(MouseEvent event) throws IOException, ClubDAOException {
-               /* name = nameField.getText();
-                surname = apellidosField.getText();
-                tel = telField.getText();
-                nickName = userField.getText();
-                password = passwordField.getText();
-                creditC = tarjetaField.getText();
-        
-                
-                ccv = Integer.valueOf(cvvField.getText());
-                  for(char c : cvvField.getText().toCharArray()){
-                      if (!Character.isDigit(c)){
-                      manageError(cvvAlert, cvvField, validCVV);
-                      }
-                  }
-                      manageCorrect(cvvAlert, cvvField, validCVV);
-                 }
-                */
-                 
-                 /*try {
-                    name = nameField.getText();
-                    surname = apellidosField.getText();
-                    tel = telField.getText();
-                    nickName = userField.getText();
-                    password = passwordField.getText();
-                    creditC = tarjetaField.getText();
-                    ccv = Integer.parseInt(cvvField.getText());
-                    if (Club.getInstance().existsLogin(nickName)){
-                        manageError(userAlert,userField,validUser);
-                    } else{
-                                         
-                       Member m = Club.getInstance().registerMember(name, surname, tel, nickName, password, creditC, ccv, null);
-                    }
-                } catch (ClubDAOException ex) {
-                    Logger.getLogger(FXMLRegistro.class.getName()).log(Level.SEVERE, null, ex);
-                }
-        
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
-                Parent root = loader.load();
-               
-                acceptButton.getScene().setRoot(root);*/
-                
-    }
 
     @FXML
     private void handleBAcceptOnAction(ActionEvent event) throws IOException {
-        try {
-                    name = nameField.getText();
-                    surname = apellidosField.getText();
-                    tel = telField.getText();
-                    nickName = userField.getText();
-                    password = passwordField.getText();
-                    creditC = tarjetaField.getText();
-                    ccv = Integer.parseInt(cvvField.getText());
-                    if (Club.getInstance().existsLogin(nickName)){
-                        manageError(userAlert,userField,validUser);
-                    } else{
-                                         
-                       member = Club.getInstance().registerMember(name, surname, tel, nickName, password, creditC, ccv, null);
-                    }
-                } catch (ClubDAOException ex) {
-                    Logger.getLogger(FXMLRegistro.class.getName()).log(Level.SEVERE, null, ex);
-                }
-        
+        if (!nameField.getText().equals(member.getName())){
+            member.setName(nameField.getText());
+        }
+        if(!apellidosField.getText().equals(member.getSurname())){
+            member.setSurname(apellidosField.getText());
+        }
+        if(!userField.getText().equals(member.getNickName())){
+            member.setNickName(userField.getText());
+        }
+        if(!cvvField.getText().equals(String.valueOf(member.getSvc()))){
+            member.setSvc(Integer.parseInt(cvvField.getText()));
+        }
+        if(!passwordField.getText().equals(member.getPassword())){
+            member.setPassword(passwordField.getText());
+        }
+        if(!telField.getText().equals(member.getTelephone())){
+            member.setTelephone(telField.getText());
+        }
+        if(!tarjetaField.getText().equals(member.getCreditCard())){
+            member.setCreditCard(tarjetaField.getText());
+        }
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
                 Parent root = loader.load();
                
@@ -419,50 +379,19 @@ public class FXMLRegistro implements Initializable {
         
         validPassword.setValue(Boolean.FALSE);
         equalPasswords.setValue(Boolean.FALSE);
-        
-        
     }
 
     @FXML
     private void clickCancel(MouseEvent event) throws IOException {
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaInicial.fxml"));
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
                 Parent root = loader.load();
-                cancelButton.getScene().setRoot(root);
+                
+                
+                acceptButton.getScene().setRoot(root);
     }
 
-    @FXML
-    private void pEnterNombre(KeyEvent event) {
+    void setMiembro(Member member1) {
+        member = member1;
     }
-
-    @FXML
-    private void pEnterContraseña(KeyEvent event) {
-    }
-
-    @FXML
-    private void pEnterApellido(KeyEvent event) {
-    }
-
-    @FXML
-    private void pEnterRepetir(KeyEvent event) {
-    }
-
-    @FXML
-    private void pEnterUsuario(KeyEvent event) {
-    }
-
-    @FXML
-    private void pEnterTelefono(KeyEvent event) {
-    }
-
-    @FXML
-    private void pEnterCVV(KeyEvent event) {
-    }
-
-    @FXML
-    private void pEnterTarjetaCredito(KeyEvent event) {
-    }
-
-    
-
     
 }
