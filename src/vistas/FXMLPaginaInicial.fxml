@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane styleClass="background" stylesheets="@../CSS/style%20-%20ejemplo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.FXMLPaginaInicialController">
+<Pane styleClass="background" stylesheets="@../CSS/style_-_ejemplo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.FXMLPaginaInicialController">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="931.0" stylesheets="@../CSS/style%20-%20ejemplo.css">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="931.0">
          <top>
             <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="120.0" prefWidth="538.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
               <items>
