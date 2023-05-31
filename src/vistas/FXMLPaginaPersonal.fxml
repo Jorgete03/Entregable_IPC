@@ -54,7 +54,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton fx:id="actButton" onAction="#clickAct" prefHeight="50.0" prefWidth="150.0" style="-fx-font-weight: bold; -fx-border-color: #74FF6F; -fx-background-color: transparent; -fx-text-fill: #74FF6F;" text="Actualiazr Datos" />
+                  <MFXButton fx:id="actButton" onAction="#clickAct" prefHeight="50.0" prefWidth="150.0" style="-fx-font-weight: bold; -fx-border-color: #74FF6F; -fx-background-color: transparent; -fx-text-fill: #74FF6F;" text="Actualizar Datos" />
                </children>
             </VBox>
          </center>
