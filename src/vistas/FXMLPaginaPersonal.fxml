@@ -3,26 +3,35 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane prefHeight="607.0" prefWidth="943.0" styleClass="background" stylesheets="@../CSS/style%20-%20ejemplo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.FXMLPaginaPersonalController">
+<AnchorPane styleClass="background" stylesheets="@../CSS/style%20-%20ejemplo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.FXMLPaginaPersonalController">
    <children>
-      <BorderPane layoutY="-4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="943.0" stylesheets="@../CSS/style%20-%20ejemplo.css">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="943.0" stylesheets="@../CSS/style%20-%20ejemplo.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="165.0" stylesheets="@../CSS/style%20-%20ejemplo.css" BorderPane.alignment="CENTER">
-               <items>
-                  <Separator prefHeight="45.0" prefWidth="8.0" visible="false" />
-                  <MFXButton fx:id="CerButton" onAction="#clickCerrarSesion" text="Cerrar Sesión" />
-                  <Separator prefHeight="45.0" prefWidth="594.0" visible="false" />
-                  <Label fx:id="labelNickName" style="-fx-font-weight: bold; -fx-font-size: 15px;" text="Nombre De Usuario" />
-                  <ImageView fx:id="fotoPerfil" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
-               </items>
-            </ToolBar>
+            <AnchorPane style="-fx-background-color: white;">
+               <children>
+                  <HBox alignment="CENTER" layoutX="14.0" layoutY="8.0" prefHeight="80.0" prefWidth="321.0" AnchorPane.leftAnchor="14.0">
+                     <children>
+                        <ImageView fx:id="fotoPerfil" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets right="40.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label fx:id="labelNickName" style="-fx-font-weight: bold; -fx-font-size: 15px;" text="Nombre De Usuario" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="739.0" layoutY="7.0" prefHeight="81.0" prefWidth="207.0" AnchorPane.rightAnchor="14.0">
+                     <children>
+                        <MFXButton fx:id="CerButton" onAction="#clickCerrarSesion" text="Cerrar Sesión" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
          </top>
          <center>
             <VBox alignment="CENTER" prefHeight="552.0" prefWidth="275.0" BorderPane.alignment="CENTER">
@@ -51,4 +60,4 @@
          </center>
       </BorderPane>
    </children>
-</Pane>
+</AnchorPane>
