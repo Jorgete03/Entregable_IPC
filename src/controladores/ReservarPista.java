@@ -26,10 +26,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -59,6 +61,10 @@ public class ReservarPista implements Initializable {
     private MFXDatePicker menuDia;
     @FXML
     private ListView<LocalTime> listView;
+    @FXML
+    private Label nickName;
+    @FXML
+    private ImageView fotoPerfil;
 
     /**
      * Initializes the controller class.
@@ -67,6 +73,8 @@ public class ReservarPista implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             // TODO
+            nickName.setText(member.getNickName());
+             fotoPerfil.setImage(member.getImage());
             club.getInstance();
         } catch (ClubDAOException ex) {
             Logger.getLogger(ReservarPista.class.getName()).log(Level.SEVERE, null, ex);

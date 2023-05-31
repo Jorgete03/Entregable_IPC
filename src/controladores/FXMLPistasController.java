@@ -19,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Club;
@@ -43,6 +44,8 @@ public class FXMLPistasController implements Initializable {
     private Button bVolver;
     @FXML
     private Label labelField;
+    @FXML
+    private ImageView fotoPerfil;
     
     /**
      * Initializes the controller class.
@@ -51,6 +54,7 @@ public class FXMLPistasController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         labelField.setText(member.getNickName());
+        fotoPerfil.setImage(member.getImage());
 
     }    
 

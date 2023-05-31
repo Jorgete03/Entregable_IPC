@@ -4,6 +4,7 @@
  */
 package controladores;
 
+import static controladores.FXMLRegistro.member;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,9 +22,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Cell;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -53,6 +56,10 @@ public class Reservas implements Initializable {
     private int currentIndex = -1;
     @FXML
     private ListView<Booking> listView1;
+    @FXML
+    private Label nickName;
+    @FXML
+    private ImageView fotoPerfil;
 
     /**
      * Initializes the controller class.
@@ -61,6 +68,8 @@ public class Reservas implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         try {
+            nickName.setText(member.getNickName());
+             fotoPerfil.setImage(member.getImage());
             club = Club.getInstance();
         } catch (IOException | ClubDAOException ex) {
             Logger.getLogger(Reservas.class.getName()).log(Level.SEVERE, null, ex);
