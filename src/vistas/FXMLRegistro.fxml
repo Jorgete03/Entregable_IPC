@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -39,45 +38,16 @@
                <bottom>
                   <HBox alignment="BOTTOM_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="68.0" prefWidth="688.0" BorderPane.alignment="CENTER">
                      <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="497.0">
-                           <children>
-                              <MFXButton fx:id="importButton" onAction="#clickImportButton" prefHeight="31.0" prefWidth="91.0" text="Importar">
-                                 <HBox.margin>
-                                    <Insets bottom="20.0" />
-                                 </HBox.margin>
-                              </MFXButton>
-                              <Label text="Seleccione una imagen de perfil">
-                                 <font>
-                                    <Font size="13.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets bottom="20.0" left="12.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <ImageView fx:id="fotoPerfil" fitHeight="66.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
-                                 <HBox.margin>
-                                    <Insets bottom="5.0" left="13.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                           </children>
+                        <MFXButton fx:id="acceptButton" onAction="#handleBAcceptOnAction" style="-fx-border-color: blue; -fx-background-color: transparent; -fx-text-fill: blue;" text="Aceptar">
                            <HBox.margin>
-                              <Insets left="12.0" />
+                              <Insets bottom="20.0" right="10.0" />
                            </HBox.margin>
-                        </HBox>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <MFXButton fx:id="cancelButton" onAction="#clickCancel" style="-fx-border-color: #ff0000; -fx-background-color: transparent; -fx-text-fill: #ff0000;" text="Cancelar">
-                                 <HBox.margin>
-                                    <Insets bottom="20.0" right="10.0" />
-                                 </HBox.margin>
-                              </MFXButton>
-                              <MFXButton fx:id="acceptButton" onAction="#handleBAcceptOnAction" style="-fx-border-color: blue; -fx-background-color: transparent; -fx-text-fill: blue;" text="Aceptar">
-                                 <HBox.margin>
-                                    <Insets bottom="20.0" right="10.0" />
-                                 </HBox.margin>
-                              </MFXButton>
-                           </children>
-                        </HBox>
+                        </MFXButton>
+                        <MFXButton fx:id="cancelButton" onAction="#clickCancel" style="-fx-border-color: #ff0000; -fx-background-color: transparent; -fx-text-fill: #ff0000;" text="Cancelar">
+                           <HBox.margin>
+                              <Insets bottom="20.0" right="10.0" />
+                           </HBox.margin>
+                        </MFXButton>
                      </children>
                      <opaqueInsets>
                         <Insets />
