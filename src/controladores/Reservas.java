@@ -68,9 +68,8 @@ public class Reservas implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         try {
-            if(id==2){
             nickName.setText(member.getNickName());
-             fotoPerfil.setImage(member.getImage());}
+             fotoPerfil.setImage(member.getImage());
             club = Club.getInstance();
         } catch (IOException | ClubDAOException ex) {
             Logger.getLogger(Reservas.class.getName()).log(Level.SEVERE, null, ex);
@@ -113,6 +112,7 @@ public class Reservas implements Initializable {
 
     @FXML
     private void clickBuscar(ActionEvent event) {
+        if (member.checkLogin(nombreUsuario.getText())){
         String name = nombreUsuario.getText();
     for (int i = currentIndex + 1; i < listView1.getItems().size(); i++) {
         Booking booking = listView1.getItems().get(i);
@@ -124,6 +124,7 @@ public class Reservas implements Initializable {
             
             break;
         }
+    }
     }
 
     }
