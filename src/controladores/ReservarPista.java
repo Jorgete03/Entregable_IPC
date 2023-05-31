@@ -105,6 +105,9 @@ public class ReservarPista implements Initializable {
         LocalTime hora1 = listView.getSelectionModel().getSelectedItem();
         LocalDateTime momento = LocalDateTime.now();
         club.getInstance().registerBooking(momento, dia, hora1, false, pistaseleccionada, member);
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPistas.fxml"));
+                Parent root = loader.load();
+                botonVolver.getScene().setRoot(root);
     }
 
     @FXML

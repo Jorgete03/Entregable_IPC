@@ -66,8 +66,8 @@ public class FXMLPistasController implements Initializable {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/ReservarPista.fxml"));
                 Parent root = loader.load();
                 ReservarPista segundoController = loader.getController();
-                segundoController.setPistaSeleccionada(pistaseleccionada);
-                segundoController.setMiembro(member);
+                //segundoController.setPistaSeleccionada(pistaseleccionada);
+                //segundoController.setMiembro(member);
                 
                 
                 bVolver.getScene().setRoot(root);
@@ -86,8 +86,8 @@ public class FXMLPistasController implements Initializable {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/ReservarPista.fxml"));
                 Parent root = loader.load();
                 ReservarPista segundoController = loader.getController();
-                segundoController.setPistaSeleccionada(pistaseleccionada);
-                segundoController.setMiembro(member);
+                //segundoController.setPistaSeleccionada(pistaseleccionada);
+                //segundoController.setMiembro(member);
                 
                 
                 bVolver.getScene().setRoot(root);
@@ -105,8 +105,8 @@ public class FXMLPistasController implements Initializable {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/ReservarPista.fxml"));
                 Parent root = loader.load();
                 ReservarPista segundoController = loader.getController();
-                segundoController.setPistaSeleccionada(pistaseleccionada);
-                segundoController.setMiembro(member);
+                //segundoController.setPistaSeleccionada(pistaseleccionada);
+                //segundoController.setMiembro(member);
                 
                
                 bVolver.getScene().setRoot(root);
@@ -124,8 +124,8 @@ public class FXMLPistasController implements Initializable {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/ReservarPista.fxml"));
                 Parent root = loader.load();
                 ReservarPista segundoController = loader.getController();
-                segundoController.setPistaSeleccionada(pistaseleccionada);
-                segundoController.setMiembro(member);
+                //segundoController.setPistaSeleccionada(pistaseleccionada);
+                //segundoController.setMiembro(member);
                 
                 
                 bVolver.getScene().setRoot(root);
@@ -143,8 +143,8 @@ public class FXMLPistasController implements Initializable {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/ReservarPista.fxml"));
                 Parent root = loader.load();
                 ReservarPista segundoController = loader.getController();
-                segundoController.setPistaSeleccionada(pistaseleccionada);
-                segundoController.setMiembro(member);
+                //segundoController.setPistaSeleccionada(pistaseleccionada);
+                ///segundoController.setMiembro(member);
                 
                 
                 bVolver.getScene().setRoot(root);
@@ -162,8 +162,8 @@ public class FXMLPistasController implements Initializable {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/ReservarPista.fxml"));
                 Parent root = loader.load();
                 ReservarPista segundoController = loader.getController();
-                segundoController.setPistaSeleccionada(pistaseleccionada);
-                segundoController.setMiembro(member);
+                //segundoController.setPistaSeleccionada(pistaseleccionada);
+                //segundoController.setMiembro(member);
                 
                
                 bVolver.getScene().setRoot(root);

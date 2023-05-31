@@ -26,6 +26,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -42,10 +44,10 @@ import model.Member;
 public class ActualizarDatos implements Initializable {
     
         private BooleanProperty validPassword;
-    private BooleanProperty validEmail;
+
     private BooleanProperty equalPasswords; 
     private BooleanProperty validCVV;
-    private BooleanProperty validDNI;
+
     private BooleanProperty validTarjeta;
     private BooleanProperty validName;
     private BooleanProperty validUser;
@@ -67,14 +69,6 @@ public class ActualizarDatos implements Initializable {
     private MFXButton acceptButton;
     @FXML
     private MFXButton cancelButton;
-    @FXML
-    private TextField dniField;
-    @FXML
-    private Label dniAlert;
-    @FXML
-    private TextField emailField;
-    @FXML
-    private Label emailAlert;
     @FXML
     private TextField nameField;
     @FXML
@@ -145,22 +139,9 @@ public class ActualizarDatos implements Initializable {
         }
     }
      
-      private void checkEditEmail(){
-        if(!Utils.checkEmail(emailField.textProperty().getValueSafe())){
-            //Incorrect Email
-            manageError(emailAlert, emailField, validEmail);
-        }else {
-            manageCorrect(emailAlert, emailField, validEmail);
-        }
-    }
+
       
-      private void checkDNI(){
-          if(dniField.textProperty().getValueSafe().length() != 8){
-              manageError(dniAlert, dniField, validDNI);
-          } else {
-              manageCorrect(dniAlert, dniField, validDNI);
-          }
-      }
+
 
 
       private void checkCVV(){
@@ -236,15 +217,7 @@ public class ActualizarDatos implements Initializable {
          telField.setText(member.getTelephone());
          tarjetaField.setText(member.getCreditCard());
          
-         validEmail = new SimpleBooleanProperty();
-        validEmail.setValue(Boolean.FALSE);
-        
-        emailField.focusedProperty().addListener((observable, oldValue, newValue)->{
-            if (!newValue){
-                checkEditEmail();
-            }
-        }
-        );
+
         
         
         
@@ -257,14 +230,7 @@ public class ActualizarDatos implements Initializable {
             }
         }); 
         
-        validDNI = new SimpleBooleanProperty();
-        validDNI.setValue(Boolean.FALSE);
-        
-        dniField.focusedProperty().addListener((observable, oldValue, newValue)-> {
-            if(!newValue){
-                checkDNI();
-            }
-        }); 
+ 
         
         validName = new SimpleBooleanProperty();
         validName.setValue(Boolean.FALSE);
@@ -332,9 +298,9 @@ public class ActualizarDatos implements Initializable {
         
         
         
-        BooleanBinding validFields = Bindings.and(validEmail, validPassword)
-                .and(validCVV).and(validApellidos).and(validName)
-                .and(validUser).and(validDNI).and(validTarjeta).and(validTel)
+        BooleanBinding validFields = Bindings.and(validCVV, validPassword)
+               .and(validApellidos).and(validName)
+                .and(validUser).and(validTarjeta).and(validTel)
                  .and(equalPasswords);
         
         
@@ -371,18 +337,24 @@ public class ActualizarDatos implements Initializable {
                 Parent root = loader.load();
                
                 acceptButton.getScene().setRoot(root);
-        emailField.textProperty().setValue("");
+
         passwordField.textProperty().setValue("");
         repeatField.textProperty().setValue("");
         
-        validEmail.setValue(Boolean.FALSE);
+
         
         validPassword.setValue(Boolean.FALSE);
         equalPasswords.setValue(Boolean.FALSE);
     }
 
+   
+
+    void setMiembro(Member member1) {
+        member = member1;
+    }
+
     @FXML
-    private void clickCancel(MouseEvent event) throws IOException {
+    private void clickCancel(ActionEvent event) throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
                 Parent root = loader.load();
                 
@@ -390,8 +362,91 @@ public class ActualizarDatos implements Initializable {
                 acceptButton.getScene().setRoot(root);
     }
 
-    void setMiembro(Member member1) {
-        member = member1;
+    @FXML
+    private void pEnterNombre(KeyEvent event) {
+         if(event.getCode()==KeyCode.ENTER){
+            apellidosField.requestFocus();
+        }
+    }
+
+    @FXML
+    private void pEnterApellido(KeyEvent event) {
+         if(event.getCode()==KeyCode.ENTER){
+            passwordField.requestFocus();
+        }
+    }
+
+    @FXML
+    private void pEnterRepetir(KeyEvent event) {
+        if(event.getCode()==KeyCode.ENTER){
+            telField.requestFocus();
+        }
+    }
+
+    @FXML
+    private void pEnterContraseña(KeyEvent event) {
+         if(event.getCode()==KeyCode.ENTER){
+            repeatField.requestFocus();
+        }
+    }
+
+    @FXML
+    private void pEnterUsuario(KeyEvent event) {
+         if(event.getCode()==KeyCode.ENTER){
+            tarjetaField.requestFocus();
+        }
+    }
+
+    @FXML
+    private void pEnterTelefono(KeyEvent event) {
+           if(event.getCode()==KeyCode.ENTER){
+            userField.requestFocus();
+        }
+    }
+
+    @FXML
+    private void pEnterCVV(KeyEvent event) throws IOException {
+         if (!nameField.getText().equals(member.getName())){
+            member.setName(nameField.getText());
+        }
+        if(!apellidosField.getText().equals(member.getSurname())){
+            member.setSurname(apellidosField.getText());
+        }
+        if(!userField.getText().equals(member.getNickName())){
+            member.setNickName(userField.getText());
+        }
+        if(!cvvField.getText().equals(String.valueOf(member.getSvc()))){
+            member.setSvc(Integer.parseInt(cvvField.getText()));
+        }
+        if(!passwordField.getText().equals(member.getPassword())){
+            member.setPassword(passwordField.getText());
+        }
+        if(!telField.getText().equals(member.getTelephone())){
+            member.setTelephone(telField.getText());
+        }
+        if(!tarjetaField.getText().equals(member.getCreditCard())){
+            member.setCreditCard(tarjetaField.getText());
+        }
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
+                Parent root = loader.load();
+               
+                acceptButton.getScene().setRoot(root);
+
+        passwordField.textProperty().setValue("");
+        repeatField.textProperty().setValue("");
+        
+
+        
+        validPassword.setValue(Boolean.FALSE);
+        equalPasswords.setValue(Boolean.FALSE);
+    }
+    
+
+    @FXML
+    private void pEnterTarjetaCredito(KeyEvent event) {
+        if(event.getCode()==KeyCode.ENTER){
+            cvvField.requestFocus();
+        }
     }
     
 }
