@@ -112,7 +112,9 @@ public class FXMLRegistro implements Initializable {
     private TextField tarjetaField;
     @FXML
     private Label tarjetaAlert;
+    @FXML
     private MFXButton importButton;
+    @FXML
     private ImageView fotoPerfil;
 
   
@@ -444,6 +446,7 @@ public class FXMLRegistro implements Initializable {
                 cancelButton.getScene().setRoot(root);
     }
 
+    @FXML
     private void clickImportButton(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         configureFileChooser(fileChooser);
