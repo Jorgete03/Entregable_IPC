@@ -11,12 +11,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane prefHeight="603.0" prefWidth="1074.0" stylesheets="@../CSS/style%20-%20ejemplo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.Reservas">
    <children>
       <BorderPane layoutX="600.0" layoutY="-160.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="560.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <AnchorPane nodeOrientation="RIGHT_TO_LEFT" BorderPane.alignment="CENTER">
+            <AnchorPane nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                <children>
                   <MFXButton fx:id="botonVolver" layoutX="19.0" layoutY="27.0" onAction="#clickVolver" style="-fx-border-color: #74FF6F; -fx-font-weight: bold; -fx-text-fill: #74FF6F;" text="Volver" AnchorPane.leftAnchor="19.0" />
                   <HBox alignment="CENTER" layoutX="846.0" layoutY="1.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="80.0" prefWidth="272.0" AnchorPane.rightAnchor="82.0">
