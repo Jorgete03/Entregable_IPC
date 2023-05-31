@@ -66,12 +66,12 @@
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <MFXButton fx:id="cancelButton" onAction="#clickCancel" style="-fx-border-color: #ff0000; -fx-background-color: transparent; -fx-text-fill: #ff0000;" text="Cancelar">
+                              <MFXButton fx:id="acceptButton" onAction="#handleBAcceptOnAction" style="-fx-border-color: blue; -fx-background-color: transparent; -fx-text-fill: blue;" text="Aceptar">
                                  <HBox.margin>
                                     <Insets bottom="20.0" right="10.0" />
                                  </HBox.margin>
                               </MFXButton>
-                              <MFXButton fx:id="acceptButton" onAction="#handleBAcceptOnAction" style="-fx-border-color: blue; -fx-background-color: transparent; -fx-text-fill: blue;" text="Aceptar">
+                              <MFXButton fx:id="cancelButton" onAction="#clickCancel" style="-fx-border-color: #ff0000; -fx-background-color: transparent; -fx-text-fill: #ff0000;" text="Cancelar">
                                  <HBox.margin>
                                     <Insets bottom="20.0" right="10.0" />
                                  </HBox.margin>
