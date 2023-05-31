@@ -6,269 +6,260 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="909.0" styleClass="background" stylesheets="@../CSS/Fondo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ActualizarDatos">
+
+<AnchorPane prefHeight="644.0" prefWidth="987.0" styleClass="background" stylesheets="@../CSS/style%20-%20ejemplo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ActualizarDatos">
    <children>
-      <Pane styleClass="background" stylesheets="@../CSS/style%20-%20ejemplo.css">
-         <children>
-            <BorderPane layoutX="4.881620407104492E-5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="439.0" prefWidth="688.0" style="-fx-background-color: #30b4e8;" stylesheets="@../CSS/style%20-%20ejemplo.css">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <top>
-                  <VBox BorderPane.alignment="CENTER">
+      <BorderPane layoutX="256.0" layoutY="68.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="439.0" prefWidth="688.0" style="-fx-background-color: #30b4e8;" stylesheets="@../CSS/style%20-%20ejemplo.css" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="68.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <top>
+            <VBox BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="64.0" prefWidth="688.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="64.0" prefWidth="688.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Actualizar Datos" textAlignment="CENTER" wrappingWidth="263.13671875">
-                                 <font>
-                                    <Font name="Arial Black" size="18.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Actualizar Datos" textAlignment="CENTER" wrappingWidth="263.13671875">
+                           <font>
+                              <Font name="Arial Black" size="18.0" />
+                           </font>
+                        </Text>
                      </children>
-                  </VBox>
-               </top>
-               <bottom>
-                  <HBox alignment="BOTTOM_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="68.0" prefWidth="688.0" BorderPane.alignment="CENTER">
+                  </HBox>
+               </children>
+            </VBox>
+         </top>
+         <bottom>
+            <HBox alignment="BOTTOM_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="68.0" prefWidth="688.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="BOTTOM_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="68.0" prefWidth="688.0">
                      <children>
-                        <HBox alignment="BOTTOM_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="68.0" prefWidth="688.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="497.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="497.0">
-                                 <children>
-                                    <MFXButton fx:id="importButton" onAction="#clickImportButton" prefHeight="31.0" prefWidth="116.0" text="Importar Imagen">
-                                       <HBox.margin>
-                                          <Insets bottom="20.0" />
-                                       </HBox.margin>
-                                    </MFXButton>
-                                    <MFXButton fx:id="borrarImgButtton" onAction="#clickBorrarImg" text="Borrar Imagen">
-                                       <HBox.margin>
-                                          <Insets bottom="20.0" left="7.0" />
-                                       </HBox.margin>
-                                    </MFXButton>
-                                    <ImageView fx:id="fotoPerfil" fitHeight="66.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
-                                       <HBox.margin>
-                                          <Insets bottom="5.0" left="13.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                 </children>
+                              <MFXButton fx:id="importButton" onAction="#clickImportButton" prefHeight="31.0" prefWidth="116.0" text="Importar Imagen">
                                  <HBox.margin>
-                                    <Insets left="12.0" />
+                                    <Insets bottom="20.0" />
                                  </HBox.margin>
-                              </HBox>
-                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <MFXButton fx:id="acceptButton" onAction="#handleBAcceptOnAction" style="-fx-border-color: blue; -fx-background-color: transparent; -fx-text-fill: blue;" text="Aceptar">
-                                       <HBox.margin>
-                                          <Insets bottom="20.0" right="10.0" />
-                                       </HBox.margin>
-                                    </MFXButton>
-                                    <MFXButton fx:id="cancelButton" onAction="#clickCancel" style="-fx-border-color: #ff0000; -fx-background-color: transparent; -fx-text-fill: #ff0000;" text="Cancelar">
-                                       <HBox.margin>
-                                          <Insets bottom="20.0" right="10.0" />
-                                       </HBox.margin>
-                                    </MFXButton>
-                                 </children>
-                              </HBox>
+                              </MFXButton>
+                              <MFXButton fx:id="borrarImgButtton" onAction="#clickBorrarImg" text="Borrar Imagen">
+                                 <HBox.margin>
+                                    <Insets bottom="20.0" left="7.0" />
+                                 </HBox.margin>
+                              </MFXButton>
+                              <ImageView fx:id="fotoPerfil" fitHeight="66.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="13.0" />
+                                 </HBox.margin>
+                              </ImageView>
                            </children>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets left="12.0" />
+                           </HBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <MFXButton fx:id="acceptButton" onAction="#handleBAcceptOnAction" style="-fx-border-color: blue; -fx-background-color: transparent; -fx-text-fill: blue;" text="Aceptar">
+                                 <HBox.margin>
+                                    <Insets bottom="20.0" right="10.0" />
+                                 </HBox.margin>
+                              </MFXButton>
+                              <MFXButton fx:id="cancelButton" onAction="#clickCancel" style="-fx-border-color: #ff0000; -fx-background-color: transparent; -fx-text-fill: #ff0000;" text="Cancelar">
+                                 <HBox.margin>
+                                    <Insets bottom="20.0" right="10.0" />
+                                 </HBox.margin>
+                              </MFXButton>
+                           </children>
                         </HBox>
                      </children>
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                   </HBox>
-               </bottom>
-               <center>
-                  <VBox alignment="TOP_RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="242.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+         </bottom>
+         <center>
+            <VBox alignment="TOP_RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="242.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="90.0" prefWidth="600.0">
                      <children>
-                        <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="90.0" prefWidth="600.0">
+                        <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="77.0" prefWidth="312.0">
                            <children>
-                              <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="77.0" prefWidth="312.0">
-                                 <children>
-                                    <Label alignment="TOP_LEFT" prefHeight="20.0" prefWidth="200.0" text="Nombre" textFill="#0033ff">
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <TextField fx:id="nameField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pEnterNombre" prefHeight="30.0" prefWidth="300.0" promptText="Introduzca su nombre">
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                    <Label fx:id="nameAlert" contentDisplay="CENTER" text="Introduzca un nombre por favor" textFill="RED" visible="false" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="10.0" right="30.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox prefHeight="80.0" prefWidth="300.0">
-                                 <children>
-                                    <Label alignment="TOP_LEFT" prefHeight="20.0" prefWidth="200.0" text="Apellidos" textFill="#0033ff">
-                                       <VBox.margin>
-                                          <Insets left="10.0" top="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <TextField fx:id="apellidosField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pEnterApellido" prefHeight="30.0" prefWidth="300.0" promptText="Introduzca sus apellidos">
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                    <Label fx:id="apellidosAlert" contentDisplay="CENTER" text="Introduzca sus apellidos por favor" textFill="RED" visible="false" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="10.0" right="30.0" />
-                                 </HBox.margin>
-                              </VBox>
+                              <Label alignment="TOP_LEFT" prefHeight="20.0" prefWidth="200.0" text="Nombre" textFill="#0033ff">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="nameField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pEnterNombre" prefHeight="30.0" prefWidth="300.0" promptText="Introduzca su nombre">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label fx:id="nameAlert" contentDisplay="CENTER" text="Introduzca un nombre por favor" textFill="RED" visible="false" />
                            </children>
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <HBox alignment="TOP_RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="90.0" prefWidth="600.0">
+                           <HBox.margin>
+                              <Insets left="10.0" right="30.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox prefHeight="80.0" prefWidth="300.0">
                            <children>
-                              <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="80.0" prefWidth="300.0">
-                                 <children>
-                                    <Label alignment="TOP_LEFT" prefHeight="18.0" prefWidth="200.0" text="Repita la contraseña:" textFill="#0033ff">
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <PasswordField fx:id="repeatField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pEnterRepetir" prefHeight="30.0" prefWidth="300.0" promptText="Repita la contraseña">
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </PasswordField>
-                                    <Label fx:id="repeatAlert" prefHeight="17.0" prefWidth="416.0" text="Las contraseñas no coinciden" textFill="#ec0404" visible="false" wrapText="true">
-                                       <VBox.margin>
-                                          <Insets left="10.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="30.0" right="10.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="80.0" prefWidth="300.0">
-                                 <children>
-                                    <Label alignment="TOP_LEFT" prefHeight="20.0" prefWidth="200.0" text="Contraseña:" textFill="#0033ff">
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <PasswordField fx:id="passwordField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pEnterContraseña" prefHeight="30.0" prefWidth="300.0" promptText="Introduzca la contraseña">
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </PasswordField>
-                                    <Label fx:id="passwordAlert" prefHeight="33.0" prefWidth="424.0" text="La contraseña debe tener mínimo 6 carácteres" textFill="#ec0404" visible="false" wrapText="true">
-                                       <padding>
-                                          <Insets left="10.0" right="10.0" />
-                                       </padding>
-                                    </Label>
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="30.0" right="10.0" />
-                                 </HBox.margin>
-                              </VBox>
+                              <Label alignment="TOP_LEFT" prefHeight="20.0" prefWidth="200.0" text="Apellidos" textFill="#0033ff">
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="apellidosField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pEnterApellido" prefHeight="30.0" prefWidth="300.0" promptText="Introduzca sus apellidos">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label fx:id="apellidosAlert" contentDisplay="CENTER" text="Introduzca sus apellidos por favor" textFill="RED" visible="false" />
                            </children>
-                        </HBox>
-                        <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="90.0" prefWidth="600.0">
-                           <children>
-                              <VBox alignment="CENTER_RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="70.0" prefWidth="514.0">
-                                 <children>
-                                    <Label alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="200.0" text="Nombre de usuario" textFill="#0033ff">
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <TextField fx:id="userField" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pEnterUsuario" prefHeight="30.0" prefWidth="300.0" promptText="Introduzca el nombre de usuario que desee">
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                    <Label fx:id="userAlert" text="Introduzca un nombre de usuario por favor" textFill="RED" visible="false" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="30.0" right="10.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="77.0" prefWidth="301.0">
-                                 <children>
-                                    <Label prefHeight="20.0" prefWidth="200.0" text="Telefono" textFill="#0033ff" />
-                                    <TextField fx:id="telField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pEnterTelefono" prefHeight="30.0" prefWidth="300.0" promptText="Introduzca su número de teléfono">
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                    <Label fx:id="telAlert" prefHeight="18.0" prefWidth="146.0" text="Teléfono Incorrecto" textFill="RED" visible="false" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="30.0" right="10.0" />
-                                 </HBox.margin>
-                              </VBox>
-                           </children>
-                        </HBox>
-                        <HBox alignment="TOP_RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="90.0" prefWidth="600.0">
-                           <children>
-                              <VBox alignment="TOP_RIGHT" prefHeight="70.0" prefWidth="439.0">
-                                 <children>
-                                    <Label alignment="TOP_RIGHT" prefHeight="20.0" prefWidth="200.0" text="Código CVV" textFill="#0033ff">
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <PasswordField fx:id="cvvField" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pEnterCVV" prefHeight="30.0" prefWidth="300.0" promptText="Introduce el CVV">
-                                       <VBox.margin>
-                                          <Insets left="10.0" top="5.0" />
-                                       </VBox.margin>
-                                    </PasswordField>
-                                    <Label fx:id="cvvAlert" text="Código CVV incorrecto" textFill="#ec0404" visible="false" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="30.0" right="10.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox alignment="TOP_RIGHT" prefHeight="70.0" prefWidth="427.0">
-                                 <children>
-                                    <Label alignment="TOP_RIGHT" prefHeight="20.0" prefWidth="200.0" text="Número de tarjeta de crédito" textFill="#0033ff">
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <TextField fx:id="tarjetaField" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pEnterTarjetaCredito" prefHeight="30.0" prefWidth="300.0" promptText="Introduzca el número de su tarjeta de crédito">
-                                       <VBox.margin>
-                                          <Insets top="5.0" />
-                                       </VBox.margin>
-                                    </TextField>
-                                    <Label fx:id="tarjetaAlert" text="Número incorrecto" textFill="#ec0404" visible="false" />
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="30.0" right="10.0" />
-                                 </HBox.margin>
-                              </VBox>
-                           </children>
-                        </HBox>
+                           <HBox.margin>
+                              <Insets left="10.0" right="30.0" />
+                           </HBox.margin>
+                        </VBox>
                      </children>
-                  </VBox>
-               </center>
-            </BorderPane>
-         </children>
-      </Pane>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="TOP_RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="90.0" prefWidth="600.0">
+                     <children>
+                        <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="80.0" prefWidth="300.0">
+                           <children>
+                              <Label alignment="TOP_LEFT" prefHeight="18.0" prefWidth="200.0" text="Repita la contraseña:" textFill="#0033ff">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <PasswordField fx:id="repeatField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pEnterRepetir" prefHeight="30.0" prefWidth="300.0" promptText="Repita la contraseña">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </PasswordField>
+                              <Label fx:id="repeatAlert" prefHeight="17.0" prefWidth="416.0" text="Las contraseñas no coinciden" textFill="#ec0404" visible="false" wrapText="true">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="30.0" right="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="80.0" prefWidth="300.0">
+                           <children>
+                              <Label alignment="TOP_LEFT" prefHeight="20.0" prefWidth="200.0" text="Contraseña:" textFill="#0033ff">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <PasswordField fx:id="passwordField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pEnterContraseña" prefHeight="30.0" prefWidth="300.0" promptText="Introduzca la contraseña">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </PasswordField>
+                              <Label fx:id="passwordAlert" prefHeight="33.0" prefWidth="424.0" text="La contraseña debe tener mínimo 6 carácteres" textFill="#ec0404" visible="false" wrapText="true">
+                                 <padding>
+                                    <Insets left="10.0" right="10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="30.0" right="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="90.0" prefWidth="600.0">
+                     <children>
+                        <VBox alignment="CENTER_RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="70.0" prefWidth="514.0">
+                           <children>
+                              <Label alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="200.0" text="Nombre de usuario" textFill="#0033ff">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="userField" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pEnterUsuario" prefHeight="30.0" prefWidth="300.0" promptText="Introduzca el nombre de usuario que desee">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label fx:id="userAlert" text="Introduzca un nombre de usuario por favor" textFill="RED" visible="false" />
+                           </children>
+                           <HBox.margin>
+                              <Insets left="30.0" right="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="77.0" prefWidth="301.0">
+                           <children>
+                              <Label prefHeight="20.0" prefWidth="200.0" text="Telefono" textFill="#0033ff" />
+                              <TextField fx:id="telField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pEnterTelefono" prefHeight="30.0" prefWidth="300.0" promptText="Introduzca su número de teléfono">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label fx:id="telAlert" prefHeight="18.0" prefWidth="146.0" text="Teléfono Incorrecto" textFill="RED" visible="false" />
+                           </children>
+                           <HBox.margin>
+                              <Insets left="30.0" right="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="90.0" prefWidth="600.0">
+                     <children>
+                        <VBox alignment="TOP_RIGHT" prefHeight="70.0" prefWidth="439.0">
+                           <children>
+                              <Label alignment="TOP_RIGHT" prefHeight="20.0" prefWidth="200.0" text="Código CVV" textFill="#0033ff">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <PasswordField fx:id="cvvField" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pEnterCVV" prefHeight="30.0" prefWidth="300.0" promptText="Introduce el CVV">
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="5.0" />
+                                 </VBox.margin>
+                              </PasswordField>
+                              <Label fx:id="cvvAlert" text="Código CVV incorrecto" textFill="#ec0404" visible="false" />
+                           </children>
+                           <HBox.margin>
+                              <Insets left="30.0" right="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox alignment="TOP_RIGHT" prefHeight="70.0" prefWidth="427.0">
+                           <children>
+                              <Label alignment="TOP_RIGHT" prefHeight="20.0" prefWidth="200.0" text="Número de tarjeta de crédito" textFill="#0033ff">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="tarjetaField" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#pEnterTarjetaCredito" prefHeight="30.0" prefWidth="300.0" promptText="Introduzca el número de su tarjeta de crédito">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label fx:id="tarjetaAlert" text="Número incorrecto" textFill="#ec0404" visible="false" />
+                           </children>
+                           <HBox.margin>
+                              <Insets left="30.0" right="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
    </children>
-   <opaqueInsets>
-      <Insets />
-   </opaqueInsets>
-   <padding>
-      <Insets bottom="100.0" right="60.0" top="100.0" />
-   </padding>
-</HBox>
+</AnchorPane>
