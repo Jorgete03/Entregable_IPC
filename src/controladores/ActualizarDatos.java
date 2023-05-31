@@ -7,6 +7,7 @@ import static controladores.FXMLRegistro.member;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -61,6 +63,7 @@ public class ActualizarDatos implements Initializable {
     String name;
     String surname;
     String creditC;
+    Image image;
     int ccv;
     String tel;
     Club club;
@@ -107,6 +110,8 @@ public class ActualizarDatos implements Initializable {
     private MFXButton importButton;
     @FXML
     private ImageView fotoPerfil;
+    @FXML
+    private MFXButton borrarImgButtton;
     
     /**
      * Initializes the controller class.
@@ -340,8 +345,11 @@ public class ActualizarDatos implements Initializable {
         if(!tarjetaField.getText().equals(member.getCreditCard())){
             member.setCreditCard(tarjetaField.getText());
         }
-        if(!fotoPerfil.getImage().equals(member.getImage())){
+        if(fotoPerfil.getImage() == null){member.setImage(null);}
+        else{
+            if(!fotoPerfil.getImage().equals(member.getImage())){
             member.setImage(fotoPerfil.getImage());
+            }
         }
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
                 Parent root = loader.load();
@@ -459,7 +467,6 @@ public class ActualizarDatos implements Initializable {
         }
     }
 
-    @FXML
     private void configureFileChooser(FileChooser fileChooser) {
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg"),
@@ -468,5 +475,23 @@ public class ActualizarDatos implements Initializable {
         );
         fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg"));
     }
-    
+
+    @FXML
+    private void clickImportButton(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        configureFileChooser(fileChooser);
+        Stage stage = (Stage) importButton.getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(stage);
+
+        if (selectedFile != null) {
+            image = new Image(selectedFile.toURI().toString());
+            fotoPerfil.setImage(image);
+        }
+    }
+
+    @FXML
+    private void clickBorrarImg(ActionEvent event) {
+        image = null;
+        fotoPerfil.setImage(image);
+    }
 }
