@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="632.0" prefWidth="1134.0" styleClass="background" stylesheets="@../CSS/style%20-%20ejemplo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.ReservarPista">
+   <children>
+      <BorderPane layoutX="238.0" layoutY="53.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="632.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="80.0" prefWidth="802.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="1.0" prefHeight="78.0" prefWidth="135.0" AnchorPane.leftAnchor="10.0">
+                     <children>
+                        <MFXButton fx:id="botonVolver" onAction="#clickVolver" style="-fx-border-color: black; -fx-font-weight: bold; -fx-text-fill: black;" text="Volver" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="673.0" prefHeight="80.0" prefWidth="263.0" AnchorPane.rightAnchor="305.0">
+                     <children>
+                        <Label fx:id="nickName" alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="172.0" style="-fx-font-weight: bold;" text="Nombre de usuario">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Label>
+                        <ImageView fx:id="fotoPerfil" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin></ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="397.0" prefWidth="178.0">
+                     <HBox.margin>
+                        <Insets top="50.0" />
+                     </HBox.margin>
+                     <children>
+                        <MFXButton fx:id="bReservar1" onAction="#clickReservar" onKeyPressed="#pEnter" prefHeight="50.0" prefWidth="120.0" style="-fx-font-weight: bold; -fx-text-fill: #74FF6F; -fx-border-color: #74FF6F;" text="Pagar" />
+                        <Label fx:id="labelError" alignment="CENTER" cache="true" prefHeight="61.0" prefWidth="178.0" textAlignment="CENTER" textFill="RED" wrapText="true" />
+                        <MFXButton fx:id="bReservar12" alignment="CENTER" contentDisplay="TOP" onAction="#clickReservarSinPagar" onKeyPressed="#pEnter" prefHeight="50.0" prefWidth="120.0" style="-fx-font-weight: bold; -fx-text-fill: #74FF6F; -fx-border-color: #74FF6F;" text="Pagar Más Tarde">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </MFXButton>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="344.0" prefWidth="481.0">
+                     <children>
+                        <MFXDatePicker fx:id="menuDia">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </MFXDatePicker>
+                        <ListView fx:id="listView">
+                           <VBox.margin>
+                              <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+                           </VBox.margin>
+                        </ListView>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
