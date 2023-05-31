@@ -3,9 +3,11 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -20,6 +22,8 @@
                   <Separator prefHeight="30.0" prefWidth="32.0" />
                   <MFXButton fx:id="botonVolver" onAction="#clickVolver" style="-fx-border-color: #74FF6F; -fx-font-weight: bold; -fx-text-fill: #74FF6F;" text="Volver" />
                   <Separator prefHeight="30.0" prefWidth="295.0" />
+                  <Label fx:id="nickName" text="Nombre De Usuario" />
+                  <ImageView fx:id="fotoPerfil" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                </items>
             </ToolBar>
          </top>
