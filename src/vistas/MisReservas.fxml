@@ -4,32 +4,36 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane styleClass="background" stylesheets="@../CSS/style%20-%20ejemplo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.MisReservas">
+
+<AnchorPane prefHeight="607.0" prefWidth="898.0" styleClass="background" stylesheets="@../CSS/style%20-%20ejemplo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.MisReservas">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="400.0" prefWidth="600.0">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="47.0" prefWidth="600.0" stylesheets="@../CSS/style%20-%20ejemplo.css" BorderPane.alignment="CENTER">
-               <items>
-                  <Separator prefHeight="30.0" prefWidth="32.0" />
-                  <MFXButton fx:id="botonVolver" onAction="#clickVolver" text="Volver" />
-                  <Separator prefHeight="27.0" prefWidth="207.0" />
-                  <Label fx:id="NombreUsuario" style="-fx-font-size: 15px; -fx-font-weight: bold;" text="Nombre de Usuario">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="fotoPerfil" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
-               </items>
-            </ToolBar>
+            <AnchorPane style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+               <children>
+                  <MFXButton fx:id="botonVolver" layoutX="37.0" layoutY="25.0" onAction="#clickVolver" stylesheets="@../CSS/style%20-%20ejemplo.css" text="Volver" AnchorPane.leftAnchor="37.0" />
+                  <HBox alignment="CENTER_LEFT" layoutX="696.0" layoutY="11.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label fx:id="NombreUsuario" prefHeight="34.0" prefWidth="118.0" style="-fx-font-size: 15px; -fx-font-weight: bold;">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="fotoPerfil" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </HBox>
+               </children>
+            </AnchorPane>
          </top>
          <center>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -46,7 +50,8 @@
                   <ListView fx:id="listVew1" prefHeight="345.0" prefWidth="533.0">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin></ListView>
+                     </HBox.margin>
+                  </ListView>
                </children>
                <opaqueInsets>
                   <Insets />
@@ -55,4 +60,4 @@
          </center>
       </BorderPane>
    </children>
-</Pane>
+</AnchorPane>
