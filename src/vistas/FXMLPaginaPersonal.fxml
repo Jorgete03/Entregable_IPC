@@ -12,7 +12,7 @@
 
 <Pane prefHeight="607.0" prefWidth="943.0" styleClass="background" stylesheets="@../CSS/style%20-%20ejemplo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.FXMLPaginaPersonalController">
    <children>
-      <BorderPane layoutX="21.0" layoutY="-4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="943.0" stylesheets="@../CSS/Botones.css">
+      <BorderPane layoutY="-4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="943.0" stylesheets="@../CSS/style%20-%20ejemplo.css">
          <top>
             <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="165.0" stylesheets="@../CSS/style%20-%20ejemplo.css" BorderPane.alignment="CENTER">
                <items>
@@ -29,39 +29,22 @@
                   <Insets top="8.0" />
                </BorderPane.margin>
                <children>
-                  <MFXButton fx:id="reservButton" onAction="#clickReserv" prefHeight="42.0" prefWidth="165.0" text="Reservar Pista">
+                  <MFXButton fx:id="reservButton" onAction="#clickReserv" prefHeight="50.0" prefWidth="150.0" style="-fx-font-weight: Bold; -fx-text-fill: #74FF6F; -fx-border-color: #74FF6F; -fx-background-color: transparent;" text="Reservar Pista">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton fx:id="verResButton" onAction="#clickVerRes" text="Ver mis Reservas">
+                  <MFXButton fx:id="verResButton" onAction="#clickVerRes" prefHeight="50.0" prefWidth="150.0" style="-fx-font-weight: bold; -fx-text-fill: #74FF6F; -fx-border-color: #74FF6F; -fx-background-color: transparent;" text="Ver mis Reservas">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </MFXButton>
-                  <MFXButton fx:id="verDispButton" onAction="#clickVerDisp" prefHeight="64.0" prefWidth="167.0">
+                  <MFXButton fx:id="verDispButton" onAction="#clickVerDisp" prefHeight="50.0" prefWidth="150.0" style="-fx-font-weight: bold; -fx-border-color: #74FF6F; -fx-background-color: transparent; -fx-text-fill: #74FF6F;" text="Pistas Reservadas">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
-                     <graphic>
-                        <VBox prefHeight="49.0" prefWidth="160.0">
-                           <children>
-                              <Label prefHeight="27.0" prefWidth="148.0" text="Ver disponibilidad" textFill="WHITE" />
-                              <Label prefHeight="22.0" prefWidth="111.0" text="de las pistas" textFill="WHITE" />
-                           </children>
-                        </VBox>
-                     </graphic>
                   </MFXButton>
-                  <MFXButton fx:id="actButton" onAction="#clickAct" prefHeight="64.0" prefWidth="167.0">
-                     <graphic>
-                        <VBox prefHeight="49.0" prefWidth="160.0">
-                           <children>
-                              <Label prefHeight="27.0" prefWidth="148.0" text="Actualizar datos" textFill="WHITE" />
-                              <Label prefHeight="22.0" prefWidth="111.0" text="de socio" textFill="WHITE" />
-                           </children>
-                        </VBox>
-                     </graphic>
-                  </MFXButton>
+                  <MFXButton fx:id="actButton" onAction="#clickAct" prefHeight="50.0" prefWidth="150.0" style="-fx-font-weight: bold; -fx-border-color: #74FF6F; -fx-background-color: transparent; -fx-text-fill: #74FF6F;" text="Actualiazr Datos" />
                </children>
             </VBox>
          </center>

@@ -11,13 +11,13 @@
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="931.0" stylesheets="@../CSS/style%20-%20ejemplo.css">
          <top>
-            <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="120.0" prefWidth="538.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
+            <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="120.0" prefWidth="538.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
               <items>
-                  <MFXButton fx:id="botonRegistro" buttonType="RAISED" onAction="#clickRegistrarse" style="-fx-font-weight: bold; -fx-border-color: #74FF6F; -fx-text-fill: #74FF6F;" text="Registrarse" />
+                  <MFXButton fx:id="botonRegistro" buttonType="RAISED" onAction="#clickRegistrarse" style="-fx-font-weight: bold; -fx-border-color: black; -fx-text-fill: black;" text="Registrarse" />
                   <Separator prefHeight="110.0" prefWidth="29.0" visible="false" />
-                  <MFXButton fx:id="botonInicio" buttonType="RAISED" onAction="#clickInicioSesion" style="-fx-font-weight: bold; -fx-text-fill: #74FF6F; -fx-border-color: #74FF6F;" text="Iniciar Sesión" />
+                  <MFXButton fx:id="botonInicio" buttonType="RAISED" onAction="#clickInicioSesion" style="-fx-font-weight: bold; -fx-text-fill: black; -fx-border-color: black;" text="Iniciar Sesión" />
                   <Separator prefHeight="110.0" prefWidth="555.0" visible="false" />
-                  <MFXButton fx:id="botonPistas" buttonType="RAISED" onAction="#clickPistas" rippleAnimateShadow="true" style="-fx-font-weight: bold; -fx-text-fill: #74FF6F; -fx-border-color: #74FF6F;" text="Pistas Reservadas" />
+                  <MFXButton fx:id="botonPistas" buttonType="RAISED" onAction="#clickPistas" rippleAnimateShadow="true" style="-fx-font-weight: bold; -fx-text-fill: black; -fx-border-color: black;" text="Pistas Reservadas" />
               </items>
                <BorderPane.margin>
                   <Insets />
