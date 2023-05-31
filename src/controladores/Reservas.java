@@ -68,8 +68,9 @@ public class Reservas implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         try {
+            if(id==2){
             nickName.setText(member.getNickName());
-             fotoPerfil.setImage(member.getImage());
+             fotoPerfil.setImage(member.getImage());}
             club = Club.getInstance();
         } catch (IOException | ClubDAOException ex) {
             Logger.getLogger(Reservas.class.getName()).log(Level.SEVERE, null, ex);
