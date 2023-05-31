@@ -27,7 +27,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="fotoPerfil" fitHeight="91.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="fotoPerfil" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                </items>
             </ToolBar>
          </top>
