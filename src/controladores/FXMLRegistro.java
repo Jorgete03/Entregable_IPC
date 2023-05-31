@@ -4,8 +4,10 @@
  */
 package controladores;
 
+import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,11 +27,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.FileChooser;
 
 import model.Club;
 import model.ClubDAOException;
@@ -57,11 +62,13 @@ public class FXMLRegistro implements Initializable {
     private BooleanProperty validApellidos;
     private BooleanProperty validTel;
     
+    
     String nickName;
     String password;
     String name;
     String surname;
     String creditC;
+    Image image;
     int ccv;
     String tel;
     
@@ -105,6 +112,10 @@ public class FXMLRegistro implements Initializable {
     private TextField tarjetaField;
     @FXML
     private Label tarjetaAlert;
+    @FXML
+    private MFXButton importButton;
+    @FXML
+    private ImageView fotoPerfil;
 
   
    
@@ -321,7 +332,7 @@ public class FXMLRegistro implements Initializable {
                         manageError(userAlert,userField,validUser);
                     } else{
                                          
-                       member = Club.getInstance().registerMember(name, surname, tel, nickName, password, creditC, ccv, null);
+                       member = Club.getInstance().registerMember(name, surname, tel, nickName, password, creditC, ccv, image);
                     }
                 } catch (ClubDAOException ex) {
                     Logger.getLogger(FXMLRegistro.class.getName()).log(Level.SEVERE, null, ex);
@@ -401,7 +412,7 @@ public class FXMLRegistro implements Initializable {
                         manageError(userAlert,userField,validUser);
                     } else{
                                          
-                       member = Club.getInstance().registerMember(name, surname, tel, nickName, password, creditC, ccv, null);
+                       member = Club.getInstance().registerMember(name, surname, tel, nickName, password, creditC, ccv, image);
                     }
                 } catch (ClubDAOException ex) {
                     Logger.getLogger(FXMLRegistro.class.getName()).log(Level.SEVERE, null, ex);
@@ -435,7 +446,31 @@ public class FXMLRegistro implements Initializable {
                 cancelButton.getScene().setRoot(root);
     }
 
+    @FXML
+    private void clickImportButton(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        configureFileChooser(fileChooser);
+        Stage stage = (Stage) importButton.getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(stage);
+
+        if (selectedFile != null) {
+            image = new Image(selectedFile.toURI().toString());
+            fotoPerfil.setImage(image);
+        }
+    }
+
+    private void configureFileChooser(FileChooser fileChooser) {
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png"),
+                new FileChooser.ExtensionFilter("JPEG", "*.jpg", "*.jpeg")
+        );
+        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg"));
+    }
+    }
     
 
     
-}
+
+    
+
