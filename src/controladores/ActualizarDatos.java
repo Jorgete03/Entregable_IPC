@@ -26,9 +26,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -101,6 +103,10 @@ public class ActualizarDatos implements Initializable {
     private TextField tarjetaField;
     @FXML
     private Label tarjetaAlert;
+    @FXML
+    private MFXButton importButton;
+    @FXML
+    private ImageView fotoPerfil;
     
     /**
      * Initializes the controller class.
@@ -216,6 +222,7 @@ public class ActualizarDatos implements Initializable {
          passwordField.setText(member.getPassword());
          telField.setText(member.getTelephone());
          tarjetaField.setText(member.getCreditCard());
+         fotoPerfil.setImage(member.getImage());
          
 
         
@@ -333,6 +340,9 @@ public class ActualizarDatos implements Initializable {
         if(!tarjetaField.getText().equals(member.getCreditCard())){
             member.setCreditCard(tarjetaField.getText());
         }
+        if(!fotoPerfil.getImage().equals(member.getImage())){
+            member.setImage(fotoPerfil.getImage());
+        }
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
                 Parent root = loader.load();
                
@@ -447,6 +457,16 @@ public class ActualizarDatos implements Initializable {
         if(event.getCode()==KeyCode.ENTER){
             cvvField.requestFocus();
         }
+    }
+
+    @FXML
+    private void configureFileChooser(FileChooser fileChooser) {
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png"),
+                new FileChooser.ExtensionFilter("JPEG", "*.jpg", "*.jpeg")
+        );
+        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg"));
     }
     
 }

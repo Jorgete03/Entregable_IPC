@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -46,6 +47,8 @@ public class FXMLPaginaPersonalController implements Initializable {
     private MFXButton actButton;
     @FXML
     private Label labelNickName;
+    @FXML
+    private ImageView fotoPerfil;
 
     /**
      * Initializes the controller class.
@@ -54,6 +57,7 @@ public class FXMLPaginaPersonalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
        labelNickName.setText(member.getNickName());
+       fotoPerfil.setImage(member.getImage());
         
     }    
 
