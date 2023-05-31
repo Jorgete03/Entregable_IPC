@@ -7,7 +7,11 @@ package controladores;
 import static controladores.FXMLRegistro.member;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +29,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -50,7 +55,7 @@ public class MisReservas implements Initializable {
     @FXML
     private Label NombreUsuario;
     @FXML
-    private ToolBar labelNickName;
+    private ImageView fotoPerfil;
 
     /**
      * Initializes the controller class.
@@ -71,9 +76,18 @@ public class MisReservas implements Initializable {
         //IMPORTANTE quitar comentario la terminar Registro
         
         NombreUsuario.setText(member.getNickName());
-        ArrayList<Booking> array = club.getBookings();
-        ObservableList<Booking> reservas = FXCollections.observableArrayList(array);
+        fotoPerfil.setImage(member.getImage());
+        List<Booking> array = club.getUserBookings(member.getNickName());
+        ObservableList<Booking> reservasOld = FXCollections.observableArrayList(array);
+        LocalDateTime d = LocalDateTime.now();
+        Collections.sort(reservasOld, Comparator.comparing(Booking::getBookingDate).reversed());
+        ObservableList<Booking> reservas= FXCollections.observableArrayList();
+        reservas.add(reservasOld.get(0));
+        reservas.add(reservasOld.get(1));
+        
+        
         listVew1.setItems(reservas);
+        
         listVew1.setCellFactory(new Callback<ListView<Booking>, ListCell<Booking>>() {
             @Override
             public ListCell<Booking> call(ListView<Booking> listView) {
@@ -92,14 +106,23 @@ public class MisReservas implements Initializable {
 
 
     @FXML
-    private void clickBorrar(ActionEvent event) {
+    private void clickBorrar(ActionEvent event) throws ClubDAOException, IOException {
+         LocalDateTime d = LocalDateTime.now();
+        club.getInstance();
+        ObservableList<Booking> reservas = listVew1.getItems();
+        if((reservas.get(listVew1.getSelectionModel().getSelectedIndex()).getBookingDate().getHour()-d.getHour()>=24 && reservas.get(listVew1.getSelectionModel().getSelectedIndex()).getBookingDate().getDayOfYear()-d.getDayOfYear()>=1)){
+                reservas.remove(listVew1.getSelectionModel().getSelectedIndex());
+                club.removeBooking(listVew1.getSelectionModel().getSelectedItem());
+            }
     }
 
     void setMiembro(Member miembro) {
-        member = miembro;// Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        //member = miembro;// Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }
+
+
 class BookingCell extends ListCell<Booking> {
 
     @Override
@@ -109,7 +132,7 @@ class BookingCell extends ListCell<Booking> {
         {
             setText("");
         } else {
-            setText(t.getMember().getNickName() + " " +t.getCourt().getName() + " " + t.getBookingDate().toString());
+             setText("Usuario: " + t.getMember().getNickName() + " " +t.getCourt().getName() + " Día: " + t.getMadeForDay().toString() + " Hora: " + t.getFromTime().toString());
         }
 
     }
