@@ -5,15 +5,17 @@
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="909.0" styleClass="background" stylesheets="@../CSS/Fondo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.FXMLInicioDeSesionController">
+
+<AnchorPane prefHeight="557.0" prefWidth="876.0" styleClass="background" stylesheets="@../CSS/style%20-%20ejemplo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.FXMLInicioDeSesionController">
    <children>
-      <BorderPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="376.0" prefWidth="533.0" style="-fx-background-color: #30b4e8;" stylesheets="@../CSS/style%20-%20ejemplo.css">
+      <BorderPane layoutX="280.0" layoutY="75.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="376.0" prefWidth="533.0" style="-fx-background-color: #30b4e8;" stylesheets="@../CSS/style%20-%20ejemplo.css" AnchorPane.bottomAnchor="106.0" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="75.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -88,10 +90,4 @@
          </bottom>
       </BorderPane>
    </children>
-   <opaqueInsets>
-      <Insets />
-   </opaqueInsets>
-   <padding>
-      <Insets bottom="100.0" right="60.0" top="100.0" />
-   </padding>
-</HBox>
+</AnchorPane>
