@@ -118,6 +118,7 @@ public class Reservas implements Initializable {
             
    
         String name = nombreUsuario.getText();
+    if (member.checkLogin(nombreUsuario.getText())){
     for (int i = currentIndex + 1; i < listView1.getItems().size(); i++) {
         Booking booking = listView1.getItems().get(i);
         if(i==listView1.getItems().size()-1){i=0;}
@@ -125,8 +126,7 @@ public class Reservas implements Initializable {
             listView1.getSelectionModel().select(booking);
             currentIndex = i;
             scrollToSelectedElement();
-            
-            break;
+            break;}
         }
     }
     
@@ -143,7 +143,9 @@ public class Reservas implements Initializable {
     @FXML
     private void pEnter(KeyEvent event) {
         if (event.getCode()== KeyCode.ENTER){
+            
             String name = nombreUsuario.getText();
+            if (member.checkLogin(nombreUsuario.getText())){
     for (int i = currentIndex + 1; i < listView1.getItems().size(); i++) {
         Booking booking = listView1.getItems().get(i);
         if(i==listView1.getItems().size()-1){i=0;}
@@ -151,7 +153,7 @@ public class Reservas implements Initializable {
             listView1.getSelectionModel().select(booking);
             currentIndex = i;
             scrollToSelectedElement();
-            break;
+            break;}
                 }
             }
         }

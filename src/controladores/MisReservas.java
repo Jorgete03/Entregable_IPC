@@ -82,9 +82,9 @@ public class MisReservas implements Initializable {
         LocalDateTime d = LocalDateTime.now();
         Collections.sort(reservasOld, Comparator.comparing(Booking::getBookingDate).reversed());
         ObservableList<Booking> reservas= FXCollections.observableArrayList();
-        if(reservas.size()>=1){
+        if(reservasOld.size()>=1){
         reservas.add(reservasOld.get(0));}
-        if(reservas.size()>=2){
+        if(reservasOld.size()>=2){
         reservas.add(reservasOld.get(1));}
         
         
