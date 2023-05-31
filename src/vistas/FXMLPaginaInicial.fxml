@@ -2,31 +2,46 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane styleClass="background" stylesheets="@../CSS/style%20-%20ejemplo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.FXMLPaginaInicialController">
+<AnchorPane styleClass="background" stylesheets="@../CSS/style%20-%20ejemplo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.FXMLPaginaInicialController">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="931.0" stylesheets="@../CSS/style%20-%20ejemplo.css">
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="600.0" prefWidth="900.0" stylesheets="@../CSS/style%20-%20ejemplo.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <top>
-            <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="120.0" prefWidth="538.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-              <items>
-                  <MFXButton fx:id="botonRegistro" buttonType="RAISED" onAction="#clickRegistrarse" style="-fx-font-weight: bold; -fx-border-color: black; -fx-text-fill: black;" text="Registrarse" />
-                  <Separator prefHeight="110.0" prefWidth="29.0" visible="false" />
-                  <MFXButton fx:id="botonInicio" buttonType="RAISED" onAction="#clickInicioSesion" style="-fx-font-weight: bold; -fx-text-fill: black; -fx-border-color: black;" text="Iniciar Sesión" />
-                  <Separator prefHeight="110.0" prefWidth="555.0" visible="false" />
-                  <MFXButton fx:id="botonPistas" buttonType="RAISED" onAction="#clickPistas" rippleAnimateShadow="true" style="-fx-font-weight: bold; -fx-text-fill: black; -fx-border-color: black;" text="Pistas Reservadas" />
-              </items>
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-            </ToolBar>
+            <AnchorPane prefHeight="60.0" prefWidth="887.0" style="-fx-background-color: white;">
+               <children>
+                  <HBox alignment="CENTER" layoutX="673.0" layoutY="15.0" prefHeight="31.0" prefWidth="200.0" AnchorPane.rightAnchor="27.0">
+                     <children>
+                        <MFXButton fx:id="botonInicio" buttonType="RAISED" onAction="#clickInicioSesion" prefHeight="31.0" prefWidth="100.0" style="-fx-font-weight: bold; -fx-text-fill: black; -fx-border-color: black;" text="Iniciar Sesión">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                        <MFXButton fx:id="botonRegistro" buttonType="RAISED" onAction="#clickRegistrarse" style="-fx-font-weight: bold; -fx-border-color: black; -fx-text-fill: black;" text="Registrarse">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" layoutX="14.0" layoutY="15.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="26.0" prefWidth="139.0" AnchorPane.leftAnchor="14.0">
+                     <children>
+                        <MFXButton fx:id="botonPistas" buttonType="RAISED" onAction="#clickPistas" rippleAnimateShadow="true" style="-fx-font-weight: bold; -fx-text-fill: black; -fx-border-color: black;" text="Pistas Reservadas">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </MFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
          </top>
          <center>
-            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="520.0" prefWidth="913.0" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </children>
-</Pane>
+</AnchorPane>
