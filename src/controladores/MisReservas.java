@@ -129,12 +129,19 @@ class BookingCell extends ListCell<Booking> {
 
     @Override
     protected void updateItem(Booking t, boolean bln) {
+        String pagado;
+        /* (t.getPaid()){pagado = "Pagadp";}
+        else{pagado="Pendiente de pago";}*/
         super.updateItem(t, bln); //To change body of generated methods, choose Tools | Templates.
         if (bln) // esta vacia
         {
             setText("");
         } else {
-             setText("Usuario: " + t.getMember().getNickName() + " " +t.getCourt().getName() + " Día: " + t.getMadeForDay().toString() + " Hora: " + t.getFromTime().toString());
+            if (t.getPaid()){
+             setText("Usuario: " + t.getMember().getNickName() + " " +t.getCourt().getName() + " Día: " + t.getMadeForDay().toString() + " Hora: " + t.getFromTime().toString() +" Pagado" );}
+             else{
+                setText("Usuario: " + t.getMember().getNickName() + " " +t.getCourt().getName() + " Día: " + t.getMadeForDay().toString() + " Hora: " + t.getFromTime().toString() +" Pendiente de pago" );
+        }
         }
 
     }
