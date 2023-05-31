@@ -65,6 +65,10 @@ public class ReservarPista implements Initializable {
     private Label nickName;
     @FXML
     private ImageView fotoPerfil;
+    @FXML
+    private MFXButton bReservar12;
+    @FXML
+    private Label labelError;
 
     /**
      * Initializes the controller class.
@@ -109,13 +113,18 @@ public class ReservarPista implements Initializable {
 
     @FXML
     private void clickReservar(ActionEvent event) throws ClubDAOException, IOException {
+        if (member.checkHasCreditInfo()&&member.getSvc()!=-1){
         LocalDate dia = menuDia.getValue();
         LocalTime hora1 = listView.getSelectionModel().getSelectedItem();
         LocalDateTime momento = LocalDateTime.now();
-        club.getInstance().registerBooking(momento, dia, hora1, false, pistaseleccionada, member);
+        club.getInstance().registerBooking(momento, dia, hora1, true, pistaseleccionada, member);
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPistas.fxml"));
                 Parent root = loader.load();
-                botonVolver.getScene().setRoot(root);
+                botonVolver.getScene().setRoot(root);}
+        else{
+            labelError.setText("Debe ingresar los datos de la tarjeta");
+        }
+        
     }
 
     @FXML
@@ -128,6 +137,18 @@ public class ReservarPista implements Initializable {
 
     void setMiembro(Member miembro) {
         member=miembro; 
+    }
+
+    @FXML
+    private void clickReservarSinPagar(ActionEvent event) throws ClubDAOException, IOException {
+        
+        LocalDate dia = menuDia.getValue();
+        LocalTime hora1 = listView.getSelectionModel().getSelectedItem();
+        LocalDateTime momento = LocalDateTime.now();
+        club.getInstance().registerBooking(momento, dia, hora1, false, pistaseleccionada, member);
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPistas.fxml"));
+                Parent root = loader.load();
+                botonVolver.getScene().setRoot(root);
     }
 }
 

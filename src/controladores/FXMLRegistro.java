@@ -112,9 +112,7 @@ public class FXMLRegistro implements Initializable {
     private TextField tarjetaField;
     @FXML
     private Label tarjetaAlert;
-    @FXML
     private MFXButton importButton;
-    @FXML
     private ImageView fotoPerfil;
 
   
@@ -159,10 +157,11 @@ public class FXMLRegistro implements Initializable {
 
 
       private void checkCVV(){
-          if(cvvField.textProperty().getValueSafe().length() != 3){
-              manageError(cvvAlert, cvvField, validCVV);
-          } else {
+          if(!(cvvField.textProperty().getValueSafe().length() != 3)||cvvField.getText().equals("")||cvvField.getText()==null) {
               manageCorrect(cvvAlert, cvvField, validCVV);
+          }
+          else{
+              manageError(cvvAlert, cvvField, validCVV);
           }
       }
       
@@ -191,11 +190,12 @@ public class FXMLRegistro implements Initializable {
       }
       
       private void checkTarjeta(){
-          if(tarjetaField.textProperty().getValueSafe().length() != 16){
-              manageError(tarjetaAlert, tarjetaField, validTarjeta);
-          } else {
+          if(tarjetaField.textProperty().getValueSafe().length() == 16||tarjetaField.getText().equals("")||tarjetaField.getText()==null) {
               manageCorrect(tarjetaAlert, tarjetaField, validTarjeta);
           }
+          else{
+          manageError(tarjetaAlert, tarjetaField, validTarjeta);
+          } 
       }
       
       private void checkTel(){
@@ -326,8 +326,18 @@ public class FXMLRegistro implements Initializable {
                     tel = telField.getText();
                     nickName = userField.getText();
                     password = passwordField.getText();
-                    creditC = tarjetaField.getText();
-                    ccv = Integer.parseInt(cvvField.getText());
+                    if(tarjetaField.getText().equals("")){
+                        creditC=null;
+                    }
+                    else{
+                        creditC = tarjetaField.getText();
+                    }
+                    if(cvvField.getText().equals("")){
+                        ccv=-1;
+                    }
+                    else{
+                        ccv = Integer.parseInt(cvvField.getText());
+                    }
                     if (Club.getInstance().existsLogin(nickName)){
                         manageError(userAlert,userField,validUser);
                     } else{
@@ -406,8 +416,18 @@ public class FXMLRegistro implements Initializable {
                     tel = telField.getText();
                     nickName = userField.getText();
                     password = passwordField.getText();
-                    creditC = tarjetaField.getText();
-                    ccv = Integer.parseInt(cvvField.getText());
+                    if(tarjetaField.getText().equals("")){
+                        creditC=null;
+                    }
+                    else{
+                        creditC = tarjetaField.getText();
+                    }
+                    if(cvvField.getText().equals("")){
+                        ccv=-1;
+                    }
+                    else{
+                        ccv = Integer.parseInt(cvvField.getText());
+                    }
                     if (Club.getInstance().existsLogin(nickName)){
                         manageError(userAlert,userField,validUser);
                     } else{
@@ -428,10 +448,25 @@ public class FXMLRegistro implements Initializable {
 
         
         validPassword.setValue(Boolean.FALSE);
-        equalPasswords.setValue(Boolean.FALSE);}
+        equalPasswords.setValue(Boolean.FALSE);
+        
         
     }
+                
+        
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
+                Parent root = loader.load();
+               
+                acceptButton.getScene().setRoot(root);
+        passwordField.textProperty().setValue("");
+        repeatField.textProperty().setValue("");
+        
 
+        
+        validPassword.setValue(Boolean.FALSE);
+        equalPasswords.setValue(Boolean.FALSE);}
+        
+    
     @FXML
     private void pEnterTarjetaCredito(KeyEvent event) {
         if(event.getCode()==KeyCode.ENTER){
@@ -446,7 +481,6 @@ public class FXMLRegistro implements Initializable {
                 cancelButton.getScene().setRoot(root);
     }
 
-    @FXML
     private void clickImportButton(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         configureFileChooser(fileChooser);
