@@ -8,6 +8,7 @@ import static controladores.FXMLRegistro.member;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -56,6 +57,8 @@ public class MisReservas implements Initializable {
     private Label NombreUsuario;
     @FXML
     private ImageView fotoPerfil;
+    @FXML
+    private Label horasAlert;
 
     /**
      * Initializes the controller class.
@@ -109,13 +112,20 @@ public class MisReservas implements Initializable {
 
     @FXML
     private void clickBorrar(ActionEvent event) throws ClubDAOException, IOException {
-         LocalDateTime d = LocalDateTime.now();
         club.getInstance();
         ObservableList<Booking> reservas = listVew1.getItems();
-        if((reservas.get(listVew1.getSelectionModel().getSelectedIndex()).getBookingDate().getHour()-d.getHour()>=24 && reservas.get(listVew1.getSelectionModel().getSelectedIndex()).getBookingDate().getDayOfYear()-d.getDayOfYear()>=1)){
-                reservas.remove(listVew1.getSelectionModel().getSelectedIndex());
-                club.removeBooking(listVew1.getSelectionModel().getSelectedItem());
-            }
+        
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        LocalDateTime bookingDateTime = LocalDateTime.of(reservas.get(listVew1.getSelectionModel().getSelectedIndex()).getMadeForDay(), reservas.get(listVew1.getSelectionModel().getSelectedIndex()).getFromTime());
+
+        if (ChronoUnit.HOURS.between(currentDateTime, bookingDateTime) >= 24) {
+             club.removeBooking(listVew1.getSelectionModel().getSelectedItem());
+             reservas.remove(listVew1.getSelectionModel().getSelectedIndex());
+             horasAlert.setVisible(false);
+        } else {
+            horasAlert.setVisible(true);
+        }
+        
     }
 
     void setMiembro(Member miembro) {
