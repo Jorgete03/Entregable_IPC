@@ -58,7 +58,7 @@ public class MisReservas implements Initializable {
     @FXML
     private ImageView fotoPerfil;
     @FXML
-    private Label horasAlert;
+    private Label mPagado;
 
     /**
      * Initializes the controller class.
@@ -112,24 +112,49 @@ public class MisReservas implements Initializable {
 
     @FXML
     private void clickBorrar(ActionEvent event) throws ClubDAOException, IOException {
+         LocalDateTime d = LocalDateTime.now();
         club.getInstance();
+       
+       
         ObservableList<Booking> reservas = listVew1.getItems();
-        
+
         LocalDateTime currentDateTime = LocalDateTime.now();
         LocalDateTime bookingDateTime = LocalDateTime.of(reservas.get(listVew1.getSelectionModel().getSelectedIndex()).getMadeForDay(), reservas.get(listVew1.getSelectionModel().getSelectedIndex()).getFromTime());
 
         if (ChronoUnit.HOURS.between(currentDateTime, bookingDateTime) >= 24) {
-             club.removeBooking(listVew1.getSelectionModel().getSelectedItem());
-             reservas.remove(listVew1.getSelectionModel().getSelectedIndex());
-             horasAlert.setVisible(false);
-        } else {
-            horasAlert.setVisible(true);
-        }
+            club.removeBooking(listVew1.getSelectionModel().getSelectedItem());
+            reservas.remove(listVew1.getSelectionModel().getSelectedIndex());
+            
+            
+}
+      
         
     }
 
     void setMiembro(Member miembro) {
         //member = miembro;// Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @FXML
+    private void bPagar(ActionEvent event) throws ClubDAOException, IOException {
+        ObservableList<Booking> reservas = listVew1.getItems();
+        if(listVew1.getSelectionModel().getSelectedItem().getPaid()){
+            mPagado.setText("Ya habia sido pagado");
+        }
+        else{
+            club.getInstance().removeBooking(listVew1.getSelectionModel().getSelectedItem());
+            listVew1.getSelectionModel().getSelectedItem().setPaid(Boolean.TRUE);
+            
+            mPagado.setText("Pago actualizado");
+            
+            
+            listVew1.setCellFactory(new Callback<ListView<Booking>, ListCell<Booking>>() {
+            public ListCell<Booking> call(ListView<Booking> listView) {
+                return new BookingCell();
+            }
+        });
+            club.getUserBookings(member.getNickName()).add(listVew1.getSelectionModel().getSelectedItem());
+        }
     }
     
 }
