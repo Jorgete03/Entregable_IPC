@@ -445,18 +445,20 @@ public class ActualizarDatos implements Initializable {
         if(!tarjetaField.getText().equals(member.getCreditCard())){
             member.setCreditCard(tarjetaField.getText());
         }
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
+        if (event.getCode()==KeyCode.ENTER){
+            FXMLLoader loader= new FXMLLoader(getClass().getResource("/vistas/FXMLPaginaPersonal.fxml"));
                 Parent root = loader.load();
                
                 acceptButton.getScene().setRoot(root);
 
-        passwordField.textProperty().setValue("");
-        repeatField.textProperty().setValue("");
-        
+            passwordField.textProperty().setValue("");
+            repeatField.textProperty().setValue("");
+            
 
         
-        validPassword.setValue(Boolean.FALSE);
-        equalPasswords.setValue(Boolean.FALSE);
+            validPassword.setValue(Boolean.FALSE);
+            equalPasswords.setValue(Boolean.FALSE);
+        }
     }
     
 
