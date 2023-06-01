@@ -59,6 +59,8 @@ public class MisReservas implements Initializable {
     private ImageView fotoPerfil;
     @FXML
     private Label mPagado;
+    @FXML
+    private Label horasAlert;
 
     /**
      * Initializes the controller class.
@@ -124,9 +126,12 @@ public class MisReservas implements Initializable {
         if (ChronoUnit.HOURS.between(currentDateTime, bookingDateTime) >= 24) {
             club.removeBooking(listVew1.getSelectionModel().getSelectedItem());
             reservas.remove(listVew1.getSelectionModel().getSelectedIndex());
+            horasAlert.setVisible(false);
+        } else {
+            horasAlert.setVisible(true);
+        }
             
-            
-}
+        
       
         
     }
