@@ -57,6 +57,7 @@
                               </Label>
                            </children>
                         </VBox>
+                        <Label fx:id="horasAlert" prefHeight="83.0" prefWidth="206.0" text="No se pueden cancelar las reservas con menos de 24 horas de antelación" textAlignment="JUSTIFY" textFill="RED" visible="false" wrapText="true" />
                      </children>
                   </VBox>
                   <ListView fx:id="listVew1" prefHeight="345.0" prefWidth="533.0">
