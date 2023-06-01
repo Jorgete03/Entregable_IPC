@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="607.0" prefWidth="898.0" styleClass="background" stylesheets="@../CSS/style%20-%20ejemplo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.MisReservas">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -45,6 +44,7 @@
                               <MFXButton fx:id="bBorrar" onAction="#clickBorrar" style="-fx-border-color: red; -fx-text-fill: red;" text="Borrar" />
                            </children>
                         </HBox>
+                        <Label fx:id="horasAlert" prefHeight="93.0" prefWidth="205.0" text="No puedes cancelar la reservas que queden menos de 24 horas" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" />
                      </children>
                   </VBox>
                   <ListView fx:id="listVew1" prefHeight="345.0" prefWidth="533.0">
